@@ -1419,6 +1419,16 @@
 
     <!-- FLOATING CONTACT (Zalo / Hotline) -->
     <div class="fixed right-3 bottom-20 md:bottom-6 z-40 flex flex-col gap-2">
+      <button
+        id="scroll-top"
+        type="button"
+        onclick="scrollToTop()"
+        class="tap w-12 h-12 rounded-full bg-white text-brand-primary border-2 border-brand-primary shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+        aria-label="Lên đầu trang"
+        tabindex="-1"
+      >
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
       <a
         href="https://zalo.me/0965284866"
         target="_blank"
@@ -1434,6 +1444,12 @@
         class="tap w-12 h-12 rounded-full bg-[#0084FF] text-white shadow-lg flex items-center justify-center"
         aria-label="Chat Messenger"
         ><i class="fa-brands fa-facebook-messenger"></i
+      ></a>
+      <a
+        href="mailto:mnanhduong.pgdviettri@gmail.com"
+        class="tap w-12 h-12 rounded-full bg-brand-primary text-white shadow-lg flex items-center justify-center"
+        aria-label="Gửi email"
+        ><i class="fa-solid fa-envelope"></i
       ></a>
       <a
         href="tel:0965284866"
@@ -1660,6 +1676,23 @@
       function closePortalModal() {
         document.getElementById("portal-modal").classList.add("hidden");
       }
+
+      // Nút cuộn lên đầu trang: chỉ hiện khi đã cuộn xuống
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      (function initScrollTop() {
+        const btn = document.getElementById("scroll-top");
+        if (!btn) return;
+        function update() {
+          const show = window.scrollY > 400;
+          btn.classList.toggle("opacity-0", !show);
+          btn.classList.toggle("pointer-events-none", !show);
+          btn.tabIndex = show ? 0 : -1;
+        }
+        window.addEventListener("scroll", update, { passive: true });
+        update();
+      })();
 
       function handleNewsletter(e) {
         e.preventDefault();
