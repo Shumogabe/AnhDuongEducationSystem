@@ -1,6 +1,6 @@
 # Định hướng Giao diện & Trải nghiệm Người dùng (UI/UX)
 
-> Cập nhật theo `demo1.html`. Cột **Trạng thái** cho biết hạng mục đã có trong demo hay còn cần làm.
+> Cập nhật theo `demo_portal.html`. Cột **Trạng thái** cho biết hạng mục đã có trong demo hay còn cần làm.
 
 ## 1. Phong cách Thiết kế UI (Visual Style)
 
@@ -53,6 +53,7 @@ Trên 85% phụ huynh mầm non truy cập web bằng điện thoại di động
 
 - Bộ chọn 4 cơ sở ngay Banner trang chủ. **Đã có**, hiện mở khối thông tin cơ sở (tên, địa chỉ, tiện ích).
 - Chưa có: tự đổi Hotline/ảnh theo cơ sở được chọn, nút "Chỉ đường đến cơ sở gần nhất" tích hợp Google Maps. **Chưa làm**
+- Đa ngôn ngữ Việt/Anh: đã xác nhận cần có (xem `backend/sitemap.md`), demo chưa có công tắc ngôn ngữ. **Chưa làm**
 
 ### D. Tăng Tỷ lệ Chuyển đổi Tuyển sinh (CRO)
 
@@ -77,6 +78,25 @@ Trên 85% phụ huynh mầm non truy cập web bằng điện thoại di động
 
 Các trang con: Giới thiệu, Hệ thống cơ sở, Chương trình học, Dinh dưỡng, Tin tức, Tuyển sinh, Tuyển dụng.
 
+### Mức độ hoàn thiện các trang con (rà soát demo_portal.html)
+
+Demo là một file HTML, 8 trang chuyển bằng `navigateTo()`. Chi tiết từng hạng mục xem `portal/sitemap.md`.
+
+| Trang | Hiện có trong demo | Còn thiếu |
+|---|---|---|
+| Giới thiệu | Sứ mệnh - tầm nhìn, 3 giá trị cốt lõi, khung Ban quản trị | Câu chuyện thương hiệu, Hội đồng chuyên môn |
+| Cơ sở | Danh sách 4 thẻ cơ sở; khối chi tiết chung (tên, địa chỉ, 3 tiện ích cố định) | Gallery/VR, đội ngũ, liên hệ + bản đồ, học phí theo cơ sở |
+| Chương trình học | 4 thẻ theo độ tuổi | Trang chi tiết từng khối, Năng khiếu & Tiếng Anh |
+| Dinh dưỡng | 1 thực đơn mẫu, 1 khối theo dõi y tế | Thực đơn theo cơ sở, quy trình an toàn - đón trả trẻ |
+| Tin tức | 3 bài mẫu (nhãn, ngày, ảnh) | Trang chi tiết bài, lọc danh mục, thư viện ảnh/video |
+| Tuyển sinh | Form 4 trường | Bảng phí - học bổng, FAQ, quy trình đầy đủ, trang cảm ơn |
+| Tuyển dụng | 2 vị trí mẫu (yêu cầu, lương) | Chi tiết vị trí, form ứng tuyển + CV |
+| Toàn cục | Header, bottom nav, nút nổi, modal đăng nhập giả lập | Tiếng Anh, form liên hệ, 404, SEO, chính sách bảo mật |
+
+Tên cơ sở đã thống nhất: **"Quy Nhơn Nam - Gia Lai"**.
+
+> Bảng trên là kết quả rà soát trước khi bổ sung. Sau đó `demo_portal.html` đã dựng thêm giao diện cho các mục thiếu (xem mục 5).
+
 ## 4. Thông tin liên hệ dùng trong demo
 
 | Kênh | Giá trị | Ghi chú |
@@ -86,6 +106,19 @@ Các trang con: Giới thiệu, Hệ thống cơ sở, Chương trình học, Di
 | Messenger | `https://m.me/TruongMamnonAnhDuongVT` | |
 | Email nút nổi | `mnanhduong.pgdviettri@gmail.com` | |
 | Email top bar và footer | `tuyensinh@anhduongschool.edu.vn` | **Đang là dữ liệu mẫu**, cần xác nhận email chính thức |
+
+## 5. Giao diện đã bổ sung (demo_portal.html)
+
+- **Định tuyến hash:** `#/trang` hoặc `#/trang/tham-số` (nút Back của trình duyệt dùng được). Trang hoặc tham số sai chuyển sang trang 404.
+- **Cơ sở:** chi tiết 4 tab (Tổng quan, Đội ngũ, Liên hệ & Bản đồ với Google Maps embed, Học phí & Ưu đãi).
+- **Chương trình:** chi tiết từng khối tuổi (mục tiêu, hoạt động, lịch ngày) và khối Năng khiếu & Tiếng Anh.
+- **Dinh dưỡng:** thực đơn tuần chọn cơ sở và ngày; quy trình an toàn - đón trả trẻ.
+- **Tin tức:** lọc danh mục, phân trang, trang chi tiết, bài liên quan; trang Thư viện Ảnh & Video.
+- **Tuyển sinh:** quy trình 6 bước, bảng phí, học bổng, FAQ dạng thu gọn, trang cảm ơn.
+- **Tuyển dụng:** chi tiết vị trí và form ứng tuyển (tải CV PDF/DOC/DOCX, tối đa 5MB).
+- **Toàn cục:** trang Liên hệ, Chính sách bảo mật, 404; công tắc VI/EN (mới dịch khung giao diện); title và meta theo trang.
+- **Form:** báo lỗi từng ô, kiểm tra số điện thoại/email, ô ẩn chống spam. Chưa gửi dữ liệu về backend.
+- Số liệu mẫu (học phí, thực đơn, lịch ngày) và khung ảnh nét đứt cần thay bằng nội dung thật.
 
 # Các Hạng mục Nội dung Đặc thù cần Chuẩn bị
 

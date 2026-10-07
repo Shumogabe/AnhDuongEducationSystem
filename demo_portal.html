@@ -50,6 +50,11 @@
           no-repeat left center / contain;
         flex-shrink: 0;
       }
+      .wave svg {
+        display: block;
+        width: 100%;
+        height: clamp(28px, 5vw, 64px);
+      }
       .rounded-custom {
         border-radius: 24px;
       }
@@ -96,6 +101,17 @@
         outline-offset: 2px;
       }
     </style>
+    <meta name="description" content="Hệ thống mầm non Ánh Dương: 4 cơ sở tại Phú Thọ, Quy Nhơn Nam, Nha Trang. Đặt lịch tham quan trường hôm nay." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:title" content="Hệ Thống Giáo Dục Mầm Non Ánh Dương" />
+    <meta property="og:description" content="Hệ thống mầm non Ánh Dương: 4 cơ sở tại Phú Thọ, Quy Nhơn Nam, Nha Trang." />
+    <style>
+      .tab-btn { background: #fff; color: #2d3748; }
+      .tab-btn.active { background: #8e2424; color: #fff; border-color: #8e2424; }
+      details > summary::-webkit-details-marker { display: none; }
+      [aria-invalid="true"] { border-color: #dc2626 !important; }
+    </style>
   </head>
   <body
     class="bg-brand-cream font-sans text-brand-dark min-h-screen flex flex-col justify-between"
@@ -115,6 +131,16 @@
           >
         </div>
         <div class="flex items-center space-x-3 md:space-x-4">
+          <button
+            id="lang-toggle"
+            onclick="toggleLang()"
+            aria-label="Switch to English"
+            class="hover:underline flex items-center font-medium min-h-[44px] md:min-h-0"
+          >
+            <i class="fa-solid fa-globe mr-1"></i>
+            <span data-lang-opt="vi" class="font-bold">VI</span><span class="mx-0.5">/</span><span data-lang-opt="en">EN</span>
+          </button>
+          <span>|</span>
           <button
             onclick="openPortalModal('parent')"
             class="hover:underline flex items-center font-medium min-h-[44px] md:min-h-0"
@@ -279,6 +305,20 @@
                   <i class="fa-solid fa-briefcase mr-2 text-brand-primary"></i
                   >Tuyển Dụng
                 </button>
+                <button
+                  onclick="navigateTo('gallery')"
+                  class="w-full text-left px-4 py-2.5 hover:bg-brand-tint text-xs hover:text-brand-primary flex items-center"
+                >
+                  <i class="fa-regular fa-images mr-2 text-brand-primary"></i
+                  >Thư Viện Ảnh
+                </button>
+                <button
+                  onclick="navigateTo('contact')"
+                  class="w-full text-left px-4 py-2.5 hover:bg-brand-tint text-xs hover:text-brand-primary flex items-center"
+                >
+                  <i class="fa-solid fa-envelope mr-2 text-brand-primary"></i
+                  >Liên Hệ
+                </button>
               </div>
             </div>
           </div>
@@ -399,6 +439,18 @@
               >
                 Tuyển Dụng
               </button>
+              <button
+                onclick="navTo('gallery')"
+                class="tap w-full text-left px-3 rounded-xl hover:bg-brand-tint text-sm"
+              >
+                Thư Viện Ảnh
+              </button>
+              <button
+                onclick="navTo('contact')"
+                class="tap w-full text-left px-3 rounded-xl hover:bg-brand-tint text-sm"
+              >
+                Liên Hệ
+              </button>
             </div>
           </div>
         </div>
@@ -472,11 +524,7 @@
               <div
                 class="bg-white p-3 rounded-2xl shadow-xl border-4 border-white transform lg:rotate-1"
               >
-                <img
-                  src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80"
-                  alt="Bé vui học"
-                  class="rounded-xl w-full h-72 object-cover"
-                />
+                <div class="h-72 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-image text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh hero: học sinh &amp; cô giáo thật của trường</span></div>
                 <div class="p-4 text-center">
                   <h3 class="font-bold text-gray-800 text-base">
                     Hệ Thống Mầm Non Ánh Dương
@@ -488,6 +536,11 @@
               </div>
             </div>
           </div>
+        </div>
+
+
+        <div class="wave bg-brand-cream text-white leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
         </div>
 
         <!-- Core Pillars -->
@@ -540,6 +593,179 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="wave bg-white text-brand-cream leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
+        </div>
+      <!-- HAI HỆ CHƯƠNG TRÌNH -->
+      <div class="bg-brand-cream py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-brand-primary font-semibold text-xs uppercase">Chương trình giáo dục</span>
+            <h2 class="text-2xl font-bold mt-1">Trang Bị Kiến Thức &amp; Kỹ Năng Chuẩn Bị Cho Tương Lai</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div class="bg-brand-yellow rounded-2xl p-6 space-y-3 shadow-soft">
+              <i class="fa-solid fa-earth-asia text-3xl text-brand-primary"></i>
+              <h3 class="font-bold text-lg text-brand-dark">Hệ Đào Tạo Quốc Tế Cambridge</h3>
+              <p class="text-sm text-brand-dark/80">Môi trường làm quen tiếng Anh và tư duy quốc tế cho bé.</p>
+              <button onclick="navigateTo('programs')" class="tap bg-brand-primary hover:bg-brand-deep text-white text-xs font-semibold px-5 rounded-full transition">Tìm hiểu thêm <i class="fa-solid fa-arrow-right ml-1"></i></button>
+            </div>
+            <div class="bg-brand-primary rounded-2xl p-6 space-y-3 shadow-soft text-white">
+              <i class="fa-solid fa-medal text-3xl text-brand-yellow"></i>
+              <h3 class="font-bold text-lg">Hệ Đào Tạo Chất Lượng Cao</h3>
+              <p class="text-sm text-white/90">Chương trình chuẩn Bộ GD&amp;ĐT, chăm sóc sát sao từng bé.</p>
+              <button onclick="navigateTo('programs')" class="tap bg-brand-yellow hover:bg-white text-brand-deep text-xs font-semibold px-5 rounded-full transition">Tìm hiểu thêm <i class="fa-solid fa-arrow-right ml-1"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="wave bg-brand-cream text-white leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
+        </div>
+      <!-- HÀNH TRÌNH NHẬP HỌC -->
+      <div class="bg-white py-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-10">
+            <span class="text-brand-primary font-semibold text-xs uppercase">Hành trình nhập học</span>
+            <h2 class="text-2xl font-bold mt-1">4 Bước Đón Bé Đến Với Ánh Dương</h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center space-y-2">
+              <div class="relative w-16 h-16 mx-auto rounded-full bg-brand-tint2 text-brand-primary flex items-center justify-center text-2xl"><i class="fa-solid fa-headset"></i><span class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-brand-primary text-white text-xs font-bold flex items-center justify-center">1</span></div>
+              <h3 class="font-bold text-sm">Tư vấn tuyển sinh</h3>
+              <p class="text-xs text-gray-600">Phụ huynh trao đổi với nhà trường.</p>
+            </div>
+            <div class="text-center space-y-2">
+              <div class="relative w-16 h-16 mx-auto rounded-full bg-brand-tint2 text-brand-primary flex items-center justify-center text-2xl"><i class="fa-solid fa-puzzle-piece"></i><span class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-brand-primary text-white text-xs font-bold flex items-center justify-center">2</span></div>
+              <h3 class="font-bold text-sm">Học trải nghiệm</h3>
+              <p class="text-xs text-gray-600">Bé học thử cùng cô và các bạn.</p>
+            </div>
+            <div class="text-center space-y-2">
+              <div class="relative w-16 h-16 mx-auto rounded-full bg-brand-tint2 text-brand-primary flex items-center justify-center text-2xl"><i class="fa-solid fa-file-signature"></i><span class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-brand-primary text-white text-xs font-bold flex items-center justify-center">3</span></div>
+              <h3 class="font-bold text-sm">Đăng ký và nộp hồ sơ</h3>
+              <p class="text-xs text-gray-600">Hoàn thiện hồ sơ nhập học.</p>
+            </div>
+            <div class="text-center space-y-2">
+              <div class="relative w-16 h-16 mx-auto rounded-full bg-brand-tint2 text-brand-primary flex items-center justify-center text-2xl"><i class="fa-solid fa-school"></i><span class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-brand-primary text-white text-xs font-bold flex items-center justify-center">4</span></div>
+              <h3 class="font-bold text-sm">Nhập học</h3>
+              <p class="text-xs text-gray-600">Bé chính thức đến lớp.</p>
+            </div>
+          </div>
+          <div class="text-center mt-8"><button onclick="navigateTo('admissions')" class="tap bg-brand-primary hover:bg-brand-deep text-white font-semibold px-6 rounded-full text-sm shadow-md transition">Đặt lịch tham quan</button></div>
+        </div>
+      </div>
+        <div class="wave bg-white text-brand-cream leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
+        </div>
+      <!-- ĐỘI NGŨ GIÁO VIÊN -->
+      <div class="bg-brand-cream py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-10">
+            <span class="text-brand-primary font-semibold text-xs uppercase">Giáo viên</span>
+            <h2 class="text-2xl font-bold mt-1">Đội Ngũ Giáo Viên Của Chúng Tôi</h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="space-y-2 text-center"><div class="h-48 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-user text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh giáo viên</span></div><p class="text-sm font-semibold">Họ và tên giáo viên</p><p class="text-xs text-gray-600">Chức vụ</p></div>
+            <div class="space-y-2 text-center"><div class="h-48 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-user text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh giáo viên</span></div><p class="text-sm font-semibold">Họ và tên giáo viên</p><p class="text-xs text-gray-600">Chức vụ</p></div>
+            <div class="space-y-2 text-center"><div class="h-48 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-user text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh giáo viên</span></div><p class="text-sm font-semibold">Họ và tên giáo viên</p><p class="text-xs text-gray-600">Chức vụ</p></div>
+            <div class="space-y-2 text-center"><div class="h-48 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-user text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh giáo viên</span></div><p class="text-sm font-semibold">Họ và tên giáo viên</p><p class="text-xs text-gray-600">Chức vụ</p></div>
+          </div>
+        </div>
+      </div>
+        <div class="wave bg-brand-cream text-white leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
+        </div>
+      <!-- PHỤ HUYNH CHIA SẺ -->
+      <div class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-10">
+            <span class="text-brand-primary font-semibold text-xs uppercase">Góc sẻ chia</span>
+            <h2 class="text-2xl font-bold mt-1">Chia Sẻ Của Phụ Huynh Về Chúng Tôi</h2>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <figure class="bg-brand-tint rounded-2xl p-6 space-y-3 border border-brand-tint2">
+              <i class="fa-solid fa-quote-left text-brand-primary text-2xl"></i>
+              <blockquote class="text-sm text-gray-700 leading-relaxed">Nội dung mẫu: trường sạch đẹp, giáo viên tận tâm, con tôi mỗi ngày đều háo hức đến lớp.</blockquote>
+              <figcaption class="text-xs font-bold text-brand-primary">— Phụ huynh - CS Việt Trì</figcaption>
+            </figure>
+            <figure class="bg-brand-tint rounded-2xl p-6 space-y-3 border border-brand-tint2">
+              <i class="fa-solid fa-quote-left text-brand-primary text-2xl"></i>
+              <blockquote class="text-sm text-gray-700 leading-relaxed">Nội dung mẫu: con tiến bộ rõ rệt về sự tự tin và kỹ năng giao tiếp sau vài tháng học.</blockquote>
+              <figcaption class="text-xs font-bold text-brand-primary">— Phụ huynh - CS Quy Nhơn Nam</figcaption>
+            </figure>
+            <figure class="bg-brand-tint rounded-2xl p-6 space-y-3 border border-brand-tint2">
+              <i class="fa-solid fa-quote-left text-brand-primary text-2xl"></i>
+              <blockquote class="text-sm text-gray-700 leading-relaxed">Nội dung mẫu: thực đơn đa dạng, nhà trường cập nhật thông tin cho phụ huynh rất kịp thời.</blockquote>
+              <figcaption class="text-xs font-bold text-brand-primary">— Phụ huynh - CS Nha Trang</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- ĐƠN VỊ ĐỒNG HÀNH -->
+      <div class="bg-white pb-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-8">
+            <span class="text-brand-primary font-semibold text-xs uppercase">Đối tác</span>
+            <h2 class="text-2xl font-bold mt-1">Đơn Vị Đồng Hành</h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="h-20 rounded-xl border border-brand-tint2 bg-white flex flex-col items-center justify-center"><span class="font-bold text-gray-600 tracking-wide">BIDV</span><span class="text-xs text-gray-500">Logo đối tác</span></div>
+            <div class="h-20 rounded-xl border border-brand-tint2 bg-white flex flex-col items-center justify-center"><span class="font-bold text-gray-600 tracking-wide">VietinBank</span><span class="text-xs text-gray-500">Logo đối tác</span></div>
+            <div class="h-20 rounded-xl border border-brand-tint2 bg-white flex flex-col items-center justify-center"><span class="font-bold text-gray-600 tracking-wide">WIDELY</span><span class="text-xs text-gray-500">Logo đối tác</span></div>
+            <div class="h-20 rounded-xl border border-brand-tint2 bg-white flex flex-col items-center justify-center"><span class="font-bold text-gray-600 tracking-wide">AN DENTAL</span><span class="text-xs text-gray-500">Logo đối tác</span></div>
+          </div>
+        </div>
+      </div>
+        <div class="wave bg-white text-brand-yellow leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
+        </div>
+
+      <!-- ĐĂNG KÝ NGAY -->
+      <div class="bg-brand-yellow py-12">
+        <div class="max-w-3xl mx-auto px-4 text-center space-y-4">
+          <span class="text-brand-primary font-semibold text-xs uppercase">Đăng ký ngay</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-deep text-balance">Cùng Ánh Dương Tạo Nên Nền Tảng Vững Chắc Cho Bé Ngay Hôm Nay</h2>
+          <button onclick="navigateTo('admissions')" class="tap bg-brand-primary hover:bg-brand-deep text-white font-bold px-8 rounded-full text-sm shadow-md transition">Đăng ký ngay <i class="fa-solid fa-arrow-right ml-1"></i></button>
+        </div>
+      </div>
+        <div class="wave bg-brand-yellow text-brand-primary leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
+        </div>
+
+      <!-- BẢN TIN -->
+      <div class="bg-brand-primary text-white py-12">
+        <div class="max-w-3xl mx-auto px-4 text-center space-y-4">
+          <span class="text-brand-yellow font-semibold text-xs uppercase">Nhận thông tin</span>
+          <h2 class="text-2xl font-bold">Đăng Ký Nhận Thông Tin Về Chúng Tôi Để Cập Nhật Mỗi Ngày</h2>
+          <form onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row gap-2 max-w-xl mx-auto">
+            <label for="newsletter-email" class="sr-only">Email</label>
+            <input id="newsletter-email" type="email" required placeholder="Email của bạn" class="flex-1 px-4 rounded-full text-brand-dark focus:outline-none" />
+            <button type="submit" class="tap bg-brand-yellow hover:bg-white text-brand-deep font-bold px-6 rounded-full text-sm transition">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+        <div class="wave bg-brand-primary text-brand-cream leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
+        </div>
+      <!-- THƯ VIỆN ẢNH -->
+      <div class="bg-brand-cream py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-8">
+            <span class="text-brand-primary font-semibold text-xs uppercase">Thư viện ảnh</span>
+            <h2 class="text-2xl font-bold mt-1">Khoảnh Khắc Tại Ánh Dương</h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3"><div class="h-40 md:h-48 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-images text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh hoạt động thật</span></div>
+            <div class="h-40 md:h-48 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-images text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh hoạt động thật</span></div>
+            <div class="h-40 md:h-48 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-images text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh hoạt động thật</span></div>
+            <div class="h-40 md:h-48 w-full rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary"><i class="fa-solid fa-images text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh hoạt động thật</span></div>
+          </div>
+        </div>
+      </div>
+        <div class="wave bg-brand-cream text-brand-deep leading-none" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor"><path d="M0,40 C180,90 360,0 540,35 C720,70 900,5 1080,35 C1260,65 1350,30 1440,45 L1440,80 L0,80 Z"/></svg>
         </div>
       </section>
 
@@ -634,6 +860,37 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="h-64 rounded-2xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center gap-2 text-brand-primary">
+              <i class="fa-solid fa-image text-2xl"></i><span class="text-xs font-semibold px-3 text-center">Ảnh thương hiệu: khoảnh khắc thật của bé và cô giáo</span>
+            </div>
+            <div class="space-y-3">
+              <h2 class="text-2xl font-bold text-gray-900">Câu Chuyện Thương Hiệu</h2>
+              <p class="text-sm text-gray-600 leading-relaxed">Ánh Dương bắt đầu từ mong muốn tạo ra một ngôi nhà thứ hai ấm áp, nơi mỗi bé được lớn lên trong yêu thương và tôn trọng. Từ một trường tại Phú Thọ, hệ thống mở rộng thành 4 cơ sở tại Phú Thọ, Gia Lai và Khánh Hòa.</p>
+              <p class="text-sm text-gray-600 leading-relaxed">Triết lý xuyên suốt: <strong>lấy trẻ làm trung tâm, lấy yêu thương làm cốt lõi, lấy trải nghiệm làm phương thức</strong>.</p>
+              <p class="text-xs text-gray-500">Nội dung mẫu, cần thay bằng câu chuyện thương hiệu chính thức.</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900 text-center">Hội Đồng Chuyên Môn</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3"><div class="w-12 h-12 rounded-full bg-brand-tint2 text-brand-primary flex items-center justify-center"><i class="fa-solid fa-user-graduate"></i></div><div><p class="text-xs font-bold">Họ tên đang cập nhật</p><p class="text-xs text-gray-500">Chuyên gia giáo dục mầm non</p></div></div>
+              <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3"><div class="w-12 h-12 rounded-full bg-green-100 text-brand-green flex items-center justify-center"><i class="fa-solid fa-heart-pulse"></i></div><div><p class="text-xs font-bold">Họ tên đang cập nhật</p><p class="text-xs text-gray-500">Chuyên gia dinh dưỡng và y tế</p></div></div>
+              <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3"><div class="w-12 h-12 rounded-full bg-blue-100 text-brand-blue flex items-center justify-center"><i class="fa-solid fa-language"></i></div><div><p class="text-xs font-bold">Họ tên đang cập nhật</p><p class="text-xs text-gray-500">Cố vấn chương trình Tiếng Anh</p></div></div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900 text-center">Hệ Thống 4 Cơ Sở</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+              <button onclick="showCampusDetail('phutho1')" class="tap bg-white p-4 rounded-xl border border-gray-100 shadow-sm text-left font-semibold hover:border-brand-primary"><i class="fa-solid fa-location-dot text-brand-primary mr-2"></i>CS Việt Trì (Phú Thọ)</button>
+              <button onclick="showCampusDetail('phutho2')" class="tap bg-white p-4 rounded-xl border border-gray-100 shadow-sm text-left font-semibold hover:border-brand-primary"><i class="fa-solid fa-location-dot text-brand-primary mr-2"></i>CS Thị Xã (Phú Thọ)</button>
+              <button onclick="showCampusDetail('quynhon')" class="tap bg-white p-4 rounded-xl border border-gray-100 shadow-sm text-left font-semibold hover:border-brand-primary"><i class="fa-solid fa-location-dot text-brand-primary mr-2"></i>CS Quy Nhơn Nam (Gia Lai)</button>
+              <button onclick="showCampusDetail('nhatrang')" class="tap bg-white p-4 rounded-xl border border-gray-100 shadow-sm text-left font-semibold hover:border-brand-primary"><i class="fa-solid fa-location-dot text-brand-primary mr-2"></i>CS Nha Trang (Khánh Hòa)</button>
             </div>
           </div>
         </div>
@@ -753,183 +1010,78 @@
             </div>
           </div>
 
-          <!-- Campus Detail Card Placeholder -->
-          <div
-            id="campus-detail-box"
-            class="bg-white p-6 rounded-2xl border-2 border-brand-primary/30 mt-8 hidden"
-          >
-            <h2 id="cd-title" class="text-xl font-bold text-brand-primary mb-2">
-              Tên Cơ Sở
-            </h2>
-            <p id="cd-address" class="text-xs text-gray-600 mb-4"></p>
-            <div class="grid md:grid-cols-3 gap-4 text-xs">
-              <div class="bg-brand-cream p-3 rounded-xl">
-                <i
-                  class="fa-solid fa-shield-halved text-brand-primary mr-1"
-                ></i>
-                An ninh: Camera 24/7 toàn bộ phòng học
-              </div>
-              <div class="bg-brand-cream p-3 rounded-xl">
-                <i class="fa-solid fa-utensils text-brand-green mr-1"></i> Bếp
-                ăn 1 chiều đạt chuẩn ATTP
-              </div>
-              <div class="bg-brand-cream p-3 rounded-xl">
-                <i class="fa-solid fa-tree text-brand-gold mr-1"></i> Sân chơi
-                ngoài trời xanh mát
-              </div>
+          <!-- Chi tiết cơ sở (render bằng JS) -->
+          <div id="campus-detail" class="hidden mt-8 scroll-mt-28"></div>
+        </div>
+      </section>
+
+            <!-- 4. CHƯƠNG TRÌNH HỌC (PROGRAMS) -->
+      <section id="page-programs" class="page-section">
+        <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div class="text-center max-w-2xl mx-auto">
+            <span class="text-brand-primary font-semibold text-xs uppercase" data-i18n="programs.eyebrow">Lộ Trình Phát Triển</span>
+            <h1 class="text-3xl font-bold text-gray-900 mt-2">Chương Trình Học Theo Độ Tuổi</h1>
+            <p class="text-gray-500 text-sm mt-1">Khung chương trình thiết kế chuẩn Bộ GD&amp;ĐT kết hợp giáo dục kỹ năng</p>
+          </div>
+          <div id="program-cards" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+          <div class="space-y-6">
+            <div class="text-center max-w-2xl mx-auto">
+              <span class="text-brand-gold font-semibold text-xs uppercase">Phát Triển Năng Khiếu</span>
+              <h2 class="text-2xl font-bold text-gray-900 mt-2">Năng Khiếu &amp; Tiếng Anh</h2>
+              <p class="text-gray-500 text-sm mt-1">Các môn tự chọn, học ngoài giờ chính khóa, đăng ký theo từng cơ sở</p>
             </div>
+            <div id="talent-cards" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
           </div>
         </div>
       </section>
 
-      <!-- 4. CHƯƠNG TRÌNH HỌC (PROGRAMS) -->
-      <section id="page-programs" class="page-section">
-        <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div class="text-center max-w-2xl mx-auto">
-            <span class="text-brand-primary font-semibold text-xs uppercase"
-              >Lộ Trình Phát Triển</span
-            >
-            <h1 class="text-3xl font-bold text-gray-900 mt-2">
-              Chương Trình Học Theo Độ Tuổi
-            </h1>
-            <p class="text-gray-500 text-sm mt-1">
-              Khung chương trình thiết kế chuẩn Bộ GD&ĐT kết hợp giáo dục kỹ
-              năng
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div
-              class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-3"
-            >
-              <div
-                class="w-10 h-10 bg-brand-tint2 text-brand-primary font-bold rounded-xl flex items-center justify-center text-sm"
-              >
-                NT
-              </div>
-              <h3 class="font-bold text-base">Khối Nhà Trẻ</h3>
-              <p class="text-xs text-brand-primary font-semibold">
-                (12 - 36 tháng)
-              </p>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Tập trung thích nghi môi trường, phát triển ngôn ngữ đơn giản và
-                tập tự phục vụ bản thân.
-              </p>
-            </div>
-            <div
-              class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-3"
-            >
-              <div
-                class="w-10 h-10 bg-yellow-100 text-brand-gold font-bold rounded-xl flex items-center justify-center text-sm"
-              >
-                MGB
-              </div>
-              <h3 class="font-bold text-base">Mẫu Giáo Bé</h3>
-              <p class="text-xs text-brand-primary font-semibold">
-                (3 - 4 tuổi)
-              </p>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Hình thành thói quen giao tiếp, nhận biết màu sắc, hình khối và
-                vận động tinh qua trò chơi.
-              </p>
-            </div>
-            <div
-              class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-3"
-            >
-              <div
-                class="w-10 h-10 bg-green-100 text-brand-green font-bold rounded-xl flex items-center justify-center text-sm"
-              >
-                MGN
-              </div>
-              <h3 class="font-bold text-base">Mẫu Giáo Nhỡ</h3>
-              <p class="text-xs text-brand-primary font-semibold">
-                (4 - 5 tuổi)
-              </p>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Khám phá khoa học đơn giản, làm quen Tiếng Anh phản xạ và rèn
-                luyện tư duy logic.
-              </p>
-            </div>
-            <div
-              class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-3"
-            >
-              <div
-                class="w-10 h-10 bg-blue-100 text-brand-blue font-bold rounded-xl flex items-center justify-center text-sm"
-              >
-                MGL
-              </div>
-              <h3 class="font-bold text-base">Mẫu Giáo Lớn</h3>
-              <p class="text-xs text-brand-primary font-semibold">
-                (5 - 6 tuổi)
-              </p>
-              <p class="text-xs text-gray-600 leading-relaxed">
-                Sẵn sàng vào Lớp 1: Làm quen chữ cái, toán tư duy, kỹ năng tự
-                lập và làm việc nhóm.
-              </p>
-            </div>
-          </div>
-        </div>
+      <!-- 4b. CHI TIẾT KHỐI TUỔI -->
+      <section id="page-program" class="page-section">
+        <div id="program-detail" class="py-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8"></div>
       </section>
 
       <!-- 5. CHĂM SÓC & DINH DƯỠNG (NUTRITION) -->
       <section id="page-nutrition" class="page-section">
-        <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div class="text-center max-w-2xl mx-auto">
-            <span class="text-brand-primary font-semibold text-xs uppercase"
-              >Sức Khỏe Học Đường</span
-            >
-            <h1 class="text-3xl font-bold text-gray-900 mt-2">
-              Chế Độ Dinh Dưỡng & Y Tế
-            </h1>
-            <p class="text-gray-500 text-sm mt-1">
-              Đảm bảo calo và vi chất dinh dưỡng theo độ tuổi
-            </p>
+            <span class="text-brand-primary font-semibold text-xs uppercase">Sức Khỏe Học Đường</span>
+            <h1 class="text-3xl font-bold text-gray-900 mt-2">Chế Độ Dinh Dưỡng &amp; Y Tế</h1>
+            <p class="text-gray-500 text-sm mt-1">Đảm bảo calo và vi chất dinh dưỡng theo độ tuổi</p>
+          </div>
+
+          <div class="bg-white p-5 md:p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+              <h2 class="font-bold text-base text-brand-primary"><i class="fa-solid fa-utensils mr-2"></i>Thực Đơn Tuần</h2>
+              <label class="flex items-center gap-2 text-xs font-semibold text-gray-700">
+                Cơ sở
+                <select id="menu-campus" onchange="renderMenu()" class="px-3 py-2 rounded-xl border border-gray-200 text-xs bg-white focus:outline-none focus:border-brand-primary"></select>
+              </label>
+            </div>
+            <div id="menu-days" role="tablist" aria-label="Chọn ngày" class="flex gap-2 overflow-x-auto pb-1"></div>
+            <div id="menu-body" class="grid md:grid-cols-3 gap-3 text-xs"></div>
+            <p class="text-xs text-gray-500">Thực đơn mẫu, cập nhật hằng tuần theo từng cơ sở. Có thể điều chỉnh theo dị ứng của bé khi phụ huynh báo trước.</p>
           </div>
 
           <div class="grid md:grid-cols-2 gap-8">
-            <div
-              class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4"
-            >
-              <h3 class="font-bold text-base text-brand-primary">
-                <i class="fa-solid fa-utensils mr-2"></i>Thực Đơn Mẫu Trong Tuần
-              </h3>
-              <div class="space-y-2 text-xs">
-                <div class="flex justify-between p-2 bg-brand-cream rounded-lg">
-                  <span>Bữa Sáng:</span
-                  ><span class="font-semibold">Súp gà ngô ngọt + Sữa hạt</span>
-                </div>
-                <div class="flex justify-between p-2 bg-brand-cream rounded-lg">
-                  <span>Bữa Trưa:</span
-                  ><span class="font-semibold"
-                    >Cơm mềm, Tôm rim me, Canh rau ngót thịt băm</span
-                  >
-                </div>
-                <div class="flex justify-between p-2 bg-brand-cream rounded-lg">
-                  <span>Bữa Chiều:</span
-                  ><span class="font-semibold">Phở bò + Sinh tố đu đủ</span>
-                </div>
-              </div>
-            </div>
-            <div
-              class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4"
-            >
-              <h3 class="font-bold text-base text-brand-green">
-                <i class="fa-solid fa-notes-medical mr-2"></i>Theo Dõi Y Tế
-              </h3>
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+              <h2 class="font-bold text-base text-brand-green"><i class="fa-solid fa-notes-medical mr-2"></i>Theo Dõi Y Tế</h2>
               <ul class="text-xs text-gray-600 space-y-2">
-                <li>
-                  <i class="fa-solid fa-check text-brand-green mr-2"></i>Khám
-                  sức khỏe định kỳ 2 lần/năm (Răng hàm mặt, Mắt, Cân đo).
-                </li>
-                <li>
-                  <i class="fa-solid fa-check text-brand-green mr-2"></i>Cập
-                  nhật biểu đồ tăng trưởng WHO trên App Phụ huynh hàng tháng.
-                </li>
-                <li>
-                  <i class="fa-solid fa-check text-brand-green mr-2"></i>Quy
-                  trình nhận và cho uống thuốc an toàn qua ứng dụng.
-                </li>
+                <li><i class="fa-solid fa-check text-brand-green mr-2"></i>Khám sức khỏe định kỳ 2 lần/năm (Răng hàm mặt, Mắt, Cân đo).</li>
+                <li><i class="fa-solid fa-check text-brand-green mr-2"></i>Cập nhật biểu đồ tăng trưởng WHO trên App Phụ huynh hàng tháng.</li>
+                <li><i class="fa-solid fa-check text-brand-green mr-2"></i>Quy trình nhận và cho uống thuốc an toàn qua ứng dụng.</li>
+                <li><i class="fa-solid fa-check text-brand-green mr-2"></i>Theo dõi dị ứng thực phẩm của từng bé.</li>
               </ul>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+              <h2 class="font-bold text-base text-brand-primary"><i class="fa-solid fa-shield-heart mr-2"></i>Quy Trình An Toàn &amp; Đón Trả Trẻ</h2>
+              <ol class="text-xs text-gray-600 space-y-3">
+                <li class="flex gap-3"><span class="w-6 h-6 shrink-0 rounded-full bg-brand-tint2 text-brand-primary font-bold flex items-center justify-center">1</span><span><strong>Đăng ký người đón:</strong> phụ huynh khai báo tối đa 3 người được phép đón bé.</span></li>
+                <li class="flex gap-3"><span class="w-6 h-6 shrink-0 rounded-full bg-brand-tint2 text-brand-primary font-bold flex items-center justify-center">2</span><span><strong>Xác thực khi đón:</strong> quét mã QR trên App Phụ huynh hoặc xuất trình giấy tờ.</span></li>
+                <li class="flex gap-3"><span class="w-6 h-6 shrink-0 rounded-full bg-brand-tint2 text-brand-primary font-bold flex items-center justify-center">3</span><span><strong>Bàn giao tại cổng:</strong> cô giáo chỉ trao bé cho người đã xác thực, ghi nhận giờ đón.</span></li>
+                <li class="flex gap-3"><span class="w-6 h-6 shrink-0 rounded-full bg-brand-tint2 text-brand-primary font-bold flex items-center justify-center">4</span><span><strong>Đón muộn / người lạ:</strong> liên hệ phụ huynh trước, không bàn giao khi chưa xác nhận.</span></li>
+              </ol>
+              <p class="text-xs text-gray-500">Camera 24/7 tại cổng và phòng học. Giờ đón trả cụ thể theo từng cơ sở.</p>
             </div>
           </div>
         </div>
@@ -939,68 +1091,39 @@
       <section id="page-news" class="page-section">
         <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div class="text-center max-w-2xl mx-auto">
-            <span class="text-brand-primary font-semibold text-xs uppercase"
-              >Bản Tin Ánh Dương</span
-            >
-            <h1 class="text-3xl font-bold text-gray-900 mt-2">
-              Tin Tức & Hoạt Động Nổi Bật
-            </h1>
+            <span class="text-brand-primary font-semibold text-xs uppercase">Bản Tin Ánh Dương</span>
+            <h1 class="text-3xl font-bold text-gray-900 mt-2">Tin Tức &amp; Hoạt Động Nổi Bật</h1>
           </div>
+          <div class="flex flex-wrap justify-center gap-2" id="news-filters" role="group" aria-label="Lọc theo danh mục"></div>
+          <div id="news-list" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+          <div id="news-pager" class="flex justify-center items-center gap-2"></div>
+          <div class="text-center">
+            <button onclick="navigateTo('gallery')" class="tap inline-flex items-center gap-2 px-5 rounded-full border-2 border-brand-primary text-brand-primary font-semibold text-sm hover:bg-brand-primary hover:text-white transition">
+              <i class="fa-regular fa-images"></i> Xem Thư viện Ảnh &amp; Video
+            </button>
+          </div>
+        </div>
+      </section>
 
-          <div class="grid md:grid-cols-3 gap-6">
-            <div
-              class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm p-4 space-y-3"
-            >
-              <div class="h-40 bg-gray-200 rounded-xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=500&q=80"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <span
-                class="text-xs bg-brand-tint2 text-brand-primary font-bold px-2 py-0.5 rounded"
-                >Sự kiện</span
-              >
-              <h3 class="font-bold text-sm leading-snug">
-                Rộn ràng không khí Tết Trung Thu tại các cơ sở Ánh Dương
-              </h3>
-              <p class="text-xs text-gray-500">25/09/2026</p>
-            </div>
-            <div
-              class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm p-4 space-y-3"
-            >
-              <div class="h-40 bg-gray-200 rounded-xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <span
-                class="text-xs bg-green-100 text-brand-green font-bold px-2 py-0.5 rounded"
-                >Góc Chuyên Gia</span
-              >
-              <h3 class="font-bold text-sm leading-snug">
-                Phương pháp rèn luyện tính tự lập cho trẻ 3-4 tuổi tại nhà
-              </h3>
-              <p class="text-xs text-gray-500">20/09/2026</p>
-            </div>
-            <div
-              class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm p-4 space-y-3"
-            >
-              <div class="h-40 bg-gray-200 rounded-xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=500&q=80"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <span
-                class="text-xs bg-blue-100 text-brand-blue font-bold px-2 py-0.5 rounded"
-                >Hoạt động</span
-              >
-              <h3 class="font-bold text-sm leading-snug">
-                Chuyến dã ngoại tìm hiểu thiên nhiên của khối Mẫu Giáo Lớn
-              </h3>
-              <p class="text-xs text-gray-500">15/09/2026</p>
+      <!-- 6b. CHI TIẾT BÀI VIẾT -->
+      <section id="page-article" class="page-section">
+        <article id="article-detail" class="py-10 max-w-3xl mx-auto px-4 space-y-6"></article>
+      </section>
+
+      <!-- 6c. THƯ VIỆN ẢNH & VIDEO -->
+      <section id="page-gallery" class="page-section">
+        <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div class="text-center max-w-2xl mx-auto">
+            <span class="text-brand-primary font-semibold text-xs uppercase">Khoảnh Khắc Ánh Dương</span>
+            <h1 class="text-3xl font-bold text-gray-900 mt-2">Thư Viện Ảnh &amp; Video</h1>
+            <p class="text-gray-500 text-sm mt-1">Album hoạt động theo từng cơ sở</p>
+          </div>
+          <div class="flex flex-wrap justify-center gap-2" id="gallery-filters" role="group" aria-label="Lọc album theo cơ sở"></div>
+          <div id="gallery-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3">
+            <h2 class="font-bold text-base text-brand-primary"><i class="fa-solid fa-circle-play mr-2"></i>Video Giới Thiệu</h2>
+            <div class="aspect-video rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center text-brand-primary text-xs gap-2">
+              <i class="fa-solid fa-film text-3xl"></i>Video giới thiệu hệ thống 1-2 phút (chưa có tư liệu)
             </div>
           </div>
         </div>
@@ -1008,79 +1131,67 @@
 
       <!-- 7. TUYỂN SINH (ADMISSIONS) -->
       <section id="page-admissions" class="page-section">
-        <div class="py-12 max-w-4xl mx-auto px-4">
-          <div
-            class="bg-white p-8 md:p-10 rounded-2xl border border-brand-tint3 shadow-soft text-center space-y-6"
-          >
-            <div>
-              <span
-                class="text-brand-primary font-bold text-xs uppercase tracking-wider"
-                >Tuyển Sinh Năm Học 2026 - 2027</span
-              >
-              <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mt-1">
-                Đăng Ký Tham Quan & Nhập Học
-              </h1>
-            </div>
+        <div class="py-12 max-w-5xl mx-auto px-4 space-y-12">
+          <div class="text-center max-w-2xl mx-auto">
+            <span class="text-brand-primary font-bold text-xs uppercase tracking-wider">Tuyển Sinh Năm Học 2026 - 2027</span>
+            <h1 class="text-3xl font-bold text-gray-900 mt-2">Đăng Ký Tham Quan &amp; Nhập Học</h1>
+          </div>
 
-            <form
-              onsubmit="handleFormSubmit(event)"
-              class="grid md:grid-cols-2 gap-4 text-left"
-            >
+          <div class="bg-white p-6 md:p-10 rounded-2xl border border-brand-tint3 shadow-soft space-y-6">
+            <h2 class="text-xl font-bold text-gray-900 text-center">Đặt Lịch Tham Quan Trường</h2>
+            <form id="form-admission" onsubmit="submitAdmission(event)" novalidate class="grid md:grid-cols-2 gap-4 text-left">
               <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1"
-                  >Họ tên Phụ huynh *</label
-                >
-                <input
-                  type="text"
-                  required
-                  placeholder="Nguyễn Văn A"
-                  class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary"
-                />
+                <label for="adm-name" class="block text-xs font-semibold text-gray-700 mb-1">Họ tên Phụ huynh *</label>
+                <input id="adm-name" name="parent" type="text" required autocomplete="name" placeholder="Nguyễn Văn A" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" />
+                <p class="field-error hidden text-xs text-red-600 mt-1"></p>
               </div>
               <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1"
-                  >Số điện thoại *</label
-                >
-                <input
-                  type="tel"
-                  required
-                  placeholder="0905 xxx xxx"
-                  class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary"
-                />
+                <label for="adm-phone" class="block text-xs font-semibold text-gray-700 mb-1">Số điện thoại *</label>
+                <input id="adm-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="0905 xxx xxx" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" />
+                <p class="field-error hidden text-xs text-red-600 mt-1"></p>
               </div>
               <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1"
-                  >Cơ sở đăng ký *</label
-                >
-                <select
-                  class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary bg-white"
-                >
-                  <option>CS Việt Trì (Phú Thọ)</option>
-                  <option>CS Thị Xã (Phú Thọ)</option>
-                  <option>CS Quy Nhơn Nam (Gia Lai)</option>
-                  <option>CS Nha Trang (Khánh Hòa)</option>
-                </select>
+                <label for="adm-campus" class="block text-xs font-semibold text-gray-700 mb-1">Cơ sở đăng ký *</label>
+                <select id="adm-campus" name="campus" class="campus-select w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary bg-white"></select>
               </div>
               <div>
-                <label class="block text-xs font-semibold text-gray-700 mb-1"
-                  >Tên &amp; tuổi của bé *</label
-                >
-                <input
-                  type="text"
-                  required
-                  placeholder="Bé Bin - 3 tuổi"
-                  class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary"
-                />
+                <label for="adm-child" class="block text-xs font-semibold text-gray-700 mb-1">Tên &amp; tuổi của bé *</label>
+                <input id="adm-child" name="child" type="text" required placeholder="Bé Bin - 3 tuổi" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" />
+                <p class="field-error hidden text-xs text-red-600 mt-1"></p>
               </div>
+              <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
               <div class="md:col-span-2 pt-2">
-                <button
-                  type="submit"
-                  class="w-full py-3 bg-brand-primary hover:bg-brand-deep text-white font-bold rounded-xl shadow-md text-xs transition"
-                >
-                  GỬI THÔNG TIN ĐĂNG KÝ
-                </button>
+                <button type="submit" class="w-full py-3 bg-brand-primary hover:bg-brand-deep text-white font-bold rounded-xl shadow-md text-xs transition">GỬI THÔNG TIN ĐĂNG KÝ</button>
+                <p class="text-xs text-gray-500 text-center mt-3">Bằng việc gửi form, bạn đồng ý với <button type="button" onclick="navigateTo('privacy')" class="underline text-brand-primary">Chính sách bảo mật</button>.</p>
               </div>
             </form>
+          </div>
+
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-gray-900 text-center">Quy Trình Đăng Ký Nhập Học</h2>
+            <ol id="admission-steps" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></ol>
+          </div>
+
+          <div class="space-y-6">
+            <div class="text-center">
+              <h2 class="text-2xl font-bold text-gray-900">Bảng Phí &amp; Học Bổng</h2>
+              <p class="text-gray-500 text-sm mt-1">Số liệu minh họa, chờ xác nhận mức phí chính thức từng cơ sở</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-x-auto">
+              <table class="w-full text-xs min-w-[520px]">
+                <caption class="sr-only">Bảng phí theo khối</caption>
+                <thead class="bg-brand-tint text-brand-primary text-left">
+                  <tr><th scope="col" class="p-3">Khối</th><th scope="col" class="p-3">Học phí / tháng</th><th scope="col" class="p-3">Tiền ăn / ngày</th><th scope="col" class="p-3">Ghi chú</th></tr>
+                </thead>
+                <tbody id="fee-rows" class="divide-y divide-gray-100"></tbody>
+              </table>
+            </div>
+            <div id="scholarship-cards" class="grid md:grid-cols-3 gap-4"></div>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900 text-center">Câu Hỏi Thường Gặp</h2>
+            <div id="faq-list" class="space-y-2 max-w-3xl mx-auto"></div>
           </div>
         </div>
       </section>
@@ -1089,53 +1200,110 @@
       <section id="page-careers" class="page-section">
         <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div class="text-center max-w-2xl mx-auto">
-            <span class="text-brand-primary font-semibold text-xs uppercase"
-              >Gia Nhập Đội Ngũ Ánh Dương</span
-            >
-            <h1 class="text-3xl font-bold text-gray-900 mt-2">
-              Cơ Hội Nghề Nghiệp
-            </h1>
-            <p class="text-gray-500 text-sm mt-1">
-              Nơi bạn được phát triển chuyên môn trong môi trường giáo dục văn
-              minh
-            </p>
+            <span class="text-brand-primary font-semibold text-xs uppercase">Gia Nhập Đội Ngũ Ánh Dương</span>
+            <h1 class="text-3xl font-bold text-gray-900 mt-2">Cơ Hội Nghề Nghiệp</h1>
+            <p class="text-gray-500 text-sm mt-1">Nơi bạn được phát triển chuyên môn trong môi trường giáo dục văn minh</p>
           </div>
+          <div id="job-list" class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"></div>
+        </div>
+      </section>
 
-          <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div
-              class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-2"
-            >
-              <span
-                class="bg-brand-primary/10 text-brand-primary text-xs font-bold px-2 py-0.5 rounded"
-                >Toàn thời gian</span
-              >
-              <h3 class="font-bold text-sm">Giáo Viên Mầm Non (Các Cơ Sở)</h3>
-              <p class="text-xs text-gray-500">
-                Yêu cầu: Tốt nghiệp Cao đẳng/Đại học Sư phạm Mầm non, yêu trẻ,
-                kiên nhẫn.
-              </p>
-              <p class="text-xs font-semibold text-brand-green">
-                Mức lương: 8.000.000 - 12.000.000 VNĐ
-              </p>
-            </div>
-            <div
-              class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-2"
-            >
-              <span
-                class="bg-brand-primary/10 text-brand-primary text-xs font-bold px-2 py-0.5 rounded"
-                >Toàn thời gian</span
-              >
-              <h3 class="font-bold text-sm">Nhân Viên Bếp / Bảo Mẫu</h3>
-              <p class="text-xs text-gray-500">
-                Yêu cầu: Có chứng chỉ nấu ăn/bảo mẫu, sạch sẽ, chu đáo.
-              </p>
-              <p class="text-xs font-semibold text-brand-green">
-                Mức lương: 6.000.000 - 8.000.000 VNĐ
-              </p>
-            </div>
+      <!-- 8b. CHI TIẾT VỊ TRÍ + FORM ỨNG TUYỂN -->
+      <section id="page-job" class="page-section">
+        <div id="job-detail" class="py-10 max-w-4xl mx-auto px-4 sm:px-6 space-y-8"></div>
+      </section>
+
+      <!-- 9. LIÊN HỆ -->
+      <section id="page-contact" class="page-section">
+        <div class="py-12 max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+          <div class="text-center max-w-2xl mx-auto">
+            <span class="text-brand-primary font-semibold text-xs uppercase">Kết Nối Với Chúng Tôi</span>
+            <h1 class="text-3xl font-bold text-gray-900 mt-2">Liên Hệ</h1>
+            <p class="text-gray-500 text-sm mt-1">Gửi câu hỏi, góp ý hoặc đề nghị hợp tác. Chúng tôi phản hồi trong 1 ngày làm việc.</p>
+          </div>
+          <div class="grid md:grid-cols-5 gap-6">
+            <form id="form-contact" onsubmit="submitContact(event)" novalidate class="md:col-span-3 bg-white p-6 rounded-2xl border border-brand-tint3 shadow-soft space-y-4">
+              <div>
+                <label for="ct-name" class="block text-xs font-semibold text-gray-700 mb-1">Họ tên *</label>
+                <input id="ct-name" name="name" type="text" required autocomplete="name" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" />
+                <p class="field-error hidden text-xs text-red-600 mt-1"></p>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="ct-phone" class="block text-xs font-semibold text-gray-700 mb-1">Số điện thoại *</label>
+                  <input id="ct-phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" />
+                  <p class="field-error hidden text-xs text-red-600 mt-1"></p>
+                </div>
+                <div>
+                  <label for="ct-email" class="block text-xs font-semibold text-gray-700 mb-1">Email</label>
+                  <input id="ct-email" name="email" type="email" autocomplete="email" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" />
+                  <p class="field-error hidden text-xs text-red-600 mt-1"></p>
+                </div>
+              </div>
+              <div>
+                <label for="ct-campus" class="block text-xs font-semibold text-gray-700 mb-1">Cơ sở liên quan</label>
+                <select id="ct-campus" name="campus" class="campus-select w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs bg-white focus:outline-none focus:border-brand-primary" data-all="true"></select>
+              </div>
+              <div>
+                <label for="ct-msg" class="block text-xs font-semibold text-gray-700 mb-1">Nội dung *</label>
+                <textarea id="ct-msg" name="message" rows="4" required maxlength="1000" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary"></textarea>
+                <p class="field-error hidden text-xs text-red-600 mt-1"></p>
+              </div>
+              <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+              <button type="submit" class="w-full py-3 bg-brand-primary hover:bg-brand-deep text-white font-bold rounded-xl shadow-md text-xs transition">GỬI LIÊN HỆ</button>
+            </form>
+            <aside class="md:col-span-2 space-y-4">
+              <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-2 text-xs">
+                <h2 class="font-bold text-sm text-brand-primary">Ban Quản Trị Hệ Thống</h2>
+                <p><i class="fa-solid fa-phone mr-2 text-brand-green"></i>Hotline: 0965 284 866</p>
+                <p class="break-words"><i class="fa-solid fa-envelope mr-2 text-brand-primary"></i>tuyensinh@anhduongschool.edu.vn</p>
+              </div>
+              <div id="contact-campuses" class="space-y-3"></div>
+            </aside>
           </div>
         </div>
       </section>
+
+      <!-- 10. CHÍNH SÁCH BẢO MẬT -->
+      <section id="page-privacy" class="page-section">
+        <div class="py-12 max-w-3xl mx-auto px-4 space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div class="text-center">
+            <h1 class="text-3xl font-bold text-gray-900">Chính Sách Bảo Mật</h1>
+            <p class="text-xs text-gray-500 mt-1">Bản nháp, cần rà soát pháp lý trước khi công bố</p>
+          </div>
+          <div><h2 class="font-bold text-base text-brand-primary mb-1">1. Dữ liệu chúng tôi thu thập</h2><p>Họ tên, số điện thoại, email phụ huynh; tên và tuổi của bé; hồ sơ ứng tuyển (CV) khi bạn gửi form trên website.</p></div>
+          <div><h2 class="font-bold text-base text-brand-primary mb-1">2. Mục đích sử dụng</h2><p>Liên hệ tư vấn tuyển sinh, sắp xếp lịch tham quan, xử lý hồ sơ ứng tuyển và gửi bản tin khi bạn đăng ký.</p></div>
+          <div><h2 class="font-bold text-base text-brand-primary mb-1">3. Thời gian lưu trữ</h2><p>Đăng ký tuyển sinh và hồ sơ ứng tuyển được lưu tối đa 3 tháng, sau đó xóa.</p></div>
+          <div><h2 class="font-bold text-base text-brand-primary mb-1">4. Chia sẻ dữ liệu</h2><p>Chúng tôi không bán dữ liệu cá nhân. Chỉ bộ phận tuyển sinh/nhân sự của cơ sở liên quan được xem thông tin bạn gửi.</p></div>
+          <div><h2 class="font-bold text-base text-brand-primary mb-1">5. Quyền của bạn</h2><p>Bạn có thể yêu cầu xem, sửa hoặc xóa dữ liệu, hoặc hủy nhận bản tin, bằng cách liên hệ qua trang <button type="button" onclick="navigateTo('contact')" class="underline text-brand-primary">Liên hệ</button>.</p></div>
+        </div>
+      </section>
+
+      <!-- 11. CẢM ƠN / 404 -->
+      <section id="page-thanks" class="page-section">
+        <div class="py-20 max-w-xl mx-auto px-4 text-center space-y-5">
+          <div class="w-20 h-20 mx-auto rounded-full bg-green-100 text-brand-green flex items-center justify-center text-4xl"><i class="fa-solid fa-circle-check"></i></div>
+          <h1 id="thanks-title" class="text-2xl font-bold text-gray-900"></h1>
+          <p id="thanks-text" class="text-sm text-gray-600"></p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <button onclick="navigateTo('home')" class="tap px-6 rounded-full bg-brand-primary hover:bg-brand-deep text-white font-semibold text-sm transition">Về trang chủ</button>
+            <button onclick="navigateTo('news')" class="tap px-6 rounded-full border-2 border-brand-primary text-brand-primary font-semibold text-sm hover:bg-brand-tint transition">Xem tin tức</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-notfound" class="page-section">
+        <div class="py-20 max-w-xl mx-auto px-4 text-center space-y-5">
+          <p class="text-7xl font-bold text-brand-primary">404</p>
+          <h1 class="text-2xl font-bold text-gray-900">Không tìm thấy trang</h1>
+          <p class="text-sm text-gray-600">Đường dẫn có thể đã thay đổi hoặc không tồn tại. Hãy quay lại trang chủ hoặc liên hệ chúng tôi.</p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <button onclick="navigateTo('home')" class="tap px-6 rounded-full bg-brand-primary hover:bg-brand-deep text-white font-semibold text-sm transition">Về trang chủ</button>
+            <button onclick="navigateTo('contact')" class="tap px-6 rounded-full border-2 border-brand-primary text-brand-primary font-semibold text-sm hover:bg-brand-tint transition">Liên hệ</button>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- FOOTER -->
@@ -1192,6 +1360,38 @@
                 Chương trình học
               </button>
             </li>
+            <li>
+              <button
+                onclick="navigateTo('news')"
+                class="hover:text-brand-yellow"
+              >
+                Tin tức
+              </button>
+            </li>
+            <li>
+              <button
+                onclick="navigateTo('admissions')"
+                class="hover:text-brand-yellow"
+              >
+                Tuyển sinh
+              </button>
+            </li>
+            <li>
+              <button
+                onclick="navigateTo('careers')"
+                class="hover:text-brand-yellow"
+              >
+                Tuyển dụng
+              </button>
+            </li>
+            <li>
+              <button
+                onclick="navigateTo('contact')"
+                class="hover:text-brand-yellow"
+              >
+                Liên hệ
+              </button>
+            </li>
           </ul>
         </div>
 
@@ -1226,17 +1426,31 @@
           <p class="text-gray-300 mt-1">
             <i class="fa-solid fa-phone mr-1"></i> Hotline: 0965 284 866
           </p>
+          <p class="text-gray-300 mt-1">
+            <a href="https://m.me/TruongMamnonAnhDuongVT" target="_blank" rel="noopener" class="hover:text-brand-yellow"><i class="fa-brands fa-facebook-messenger mr-1"></i> Messenger</a>
+          </p>
         </div>
       </div>
       <div
         class="border-t border-white/10 max-w-7xl mx-auto mt-8 pt-4 px-4 text-center text-xs text-gray-300"
       >
         © 2026 Hệ thống Giáo dục Mầm non Ánh Dương. All rights reserved.
+        <button onclick="navigateTo('privacy')" class="underline ml-2 hover:text-brand-yellow">Chính sách bảo mật</button>
       </div>
     </footer>
 
     <!-- FLOATING CONTACT (Zalo / Hotline) -->
     <div class="fixed right-3 bottom-20 md:bottom-6 z-40 flex flex-col gap-2">
+      <button
+        id="scroll-top"
+        type="button"
+        onclick="scrollToTop()"
+        class="tap w-12 h-12 rounded-full bg-white text-brand-primary border-2 border-brand-primary shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+        aria-label="Lên đầu trang"
+        tabindex="-1"
+      >
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
       <a
         href="https://zalo.me/0965284866"
         target="_blank"
@@ -1245,6 +1459,20 @@
         aria-label="Chat Zalo"
         >Zalo</a
       >
+      <a
+        href="https://m.me/TruongMamnonAnhDuongVT"
+        target="_blank"
+        rel="noopener"
+        class="tap w-12 h-12 rounded-full bg-[#0084FF] text-white shadow-lg flex items-center justify-center"
+        aria-label="Chat Messenger"
+        ><i class="fa-brands fa-facebook-messenger"></i
+      ></a>
+      <a
+        href="mailto:mnanhduong.pgdviettri@gmail.com"
+        class="tap w-12 h-12 rounded-full bg-brand-primary text-white shadow-lg flex items-center justify-center"
+        aria-label="Gửi email"
+        ><i class="fa-solid fa-envelope"></i
+      ></a>
       <a
         href="tel:0965284866"
         class="tap w-12 h-12 rounded-full bg-brand-green text-white shadow-lg flex items-center justify-center"
@@ -1355,56 +1583,289 @@
 
     <!-- JAVASCRIPT ĐIỀU HƯỚNG TRANG (SPA ROUTING DEMO) -->
     <script>
-      function navigateTo(pageId) {
-        // Hide all sections
-        const sections = document.querySelectorAll(".page-section");
-        sections.forEach((sec) => sec.classList.remove("active"));
+      // ===== DỮ LIỆU MẪU (sẽ lấy từ CMS/API khi có backend) =====
+      const HOTLINE = "0965 284 866";
+      const CAMPUSES = {
+        phutho1: {
+          short: "CS Việt Trì (Phú Thọ)",
+          name: "Mầm Non Ánh Dương - Cơ Sở 1 Việt Trì (Phú Thọ)",
+          addr: "Tái định cư Gia Cẩm, TP. Việt Trì, Tỉnh Phú Thọ",
+          coastal: false,
+        },
+        phutho2: {
+          short: "CS Thị Xã (Phú Thọ)",
+          name: "Mầm Non Ánh Dương - Cơ Sở 2 Thị Xã (Phú Thọ)",
+          addr: "Đường Hùng Vương, Thị Xã Phú Thọ, Tỉnh Phú Thọ",
+          coastal: false,
+        },
+        quynhon: {
+          short: "CS Quy Nhơn Nam (Gia Lai)",
+          name: "Mầm Non Ánh Dương - Cơ Sở Quy Nhơn Nam (Gia Lai)",
+          addr: "Đường Nguyễn Thái Học, TP. Quy Nhơn Nam, Tỉnh Gia Lai",
+          coastal: true,
+        },
+        nhatrang: {
+          short: "CS Nha Trang (Khánh Hòa)",
+          name: "Mầm Non Ánh Dương - Cơ Sở Nha Trang (Khánh Hòa)",
+          addr: "Đường Trần Phú, TP. Nha Trang, Tỉnh Khánh Hòa",
+          coastal: true,
+        },
+      };
 
-        // Show active section
-        const target = document.getElementById("page-" + pageId);
-        if (target) {
-          target.classList.add("active");
+      const AMENITIES = [
+        ["fa-shield-halved", "text-brand-primary", "An ninh: Camera 24/7 toàn bộ phòng học"],
+        ["fa-utensils", "text-brand-green", "Bếp ăn 1 chiều đạt chuẩn ATTP"],
+        ["fa-tree", "text-brand-gold", "Sân chơi ngoài trời xanh mát"],
+        ["fa-snowflake", "text-brand-blue", "Phòng học đủ ánh sáng, điều hòa"],
+        ["fa-book-open", "text-brand-primary", "Thư viện và góc sáng tạo"],
+        ["fa-house-medical", "text-brand-green", "Phòng y tế riêng"],
+      ];
+
+      const PROGRAMS = {
+        nhatre: {
+          code: "NT", tone: "bg-brand-tint2 text-brand-primary", name: "Khối Nhà Trẻ", age: "12 - 36 tháng",
+          summary: "Tập trung thích nghi môi trường, phát triển ngôn ngữ đơn giản và tập tự phục vụ bản thân.",
+          goals: ["Thích nghi môi trường mới, gắn bó với cô giáo", "Phát triển vận động thô và vận động tinh cơ bản", "Nói từ đơn, câu ngắn; làm quen bài hát, truyện", "Tập tự xúc ăn, tự rửa tay, ngủ đúng giờ"],
+          activities: ["Vận động theo nhạc", "Chơi với cát, nước, đất nặn", "Xem tranh, nghe kể chuyện", "Trò chơi cảm giác"],
+        },
+        mgbe: {
+          code: "MGB", tone: "bg-yellow-100 text-brand-gold", name: "Mẫu Giáo Bé", age: "3 - 4 tuổi",
+          summary: "Hình thành thói quen giao tiếp, nhận biết màu sắc, hình khối và vận động tinh qua trò chơi.",
+          goals: ["Mạnh dạn giao tiếp với cô và bạn", "Nhận biết màu sắc, hình khối, số lượng đến 5", "Phát triển vận động tinh: cầm bút, xếp hình", "Thói quen vệ sinh, ăn uống gọn gàng"],
+          activities: ["Tạo hình, tô màu", "Âm nhạc và vận động", "Trò chơi đóng vai", "Làm quen Tiếng Anh qua bài hát"],
+        },
+        mgnho: {
+          code: "MGN", tone: "bg-green-100 text-brand-green", name: "Mẫu Giáo Nhỡ", age: "4 - 5 tuổi",
+          summary: "Khám phá khoa học đơn giản, làm quen Tiếng Anh phản xạ và rèn luyện tư duy logic.",
+          goals: ["Khám phá thiên nhiên, thí nghiệm khoa học đơn giản", "Tư duy logic: phân loại, sắp xếp, so sánh", "Tiếng Anh phản xạ qua giao tiếp hằng ngày", "Kỹ năng hợp tác trong nhóm nhỏ"],
+          activities: ["Khám phá khoa học", "Trồng cây, chăm sóc vườn", "Kể chuyện sáng tạo", "Thể dục nhịp điệu"],
+        },
+        mglon: {
+          code: "MGL", tone: "bg-blue-100 text-brand-blue", name: "Mẫu Giáo Lớn", age: "5 - 6 tuổi",
+          summary: "Sẵn sàng vào Lớp 1: làm quen chữ cái, toán tư duy, kỹ năng tự lập và làm việc nhóm.",
+          goals: ["Làm quen chữ cái, tập tô, tập viết đúng tư thế", "Toán tư duy: đếm, so sánh, phép cộng trừ đơn giản", "Tự lập: tự chuẩn bị đồ dùng, tự giải quyết xung đột", "Tinh thần trách nhiệm và làm việc nhóm"],
+          activities: ["Làm quen với trường tiểu học", "Dự án nhóm", "Trải nghiệm thực tế", "Chuẩn bị tâm thế vào lớp 1"],
+        },
+      };
+      const DAY_SCHEDULE = [
+        ["07:00 - 08:00", "Đón trẻ, chơi tự do"],
+        ["08:00 - 08:30", "Ăn sáng"],
+        ["08:30 - 10:30", "Hoạt động học, hoạt động góc"],
+        ["10:30 - 11:30", "Hoạt động ngoài trời"],
+        ["11:30 - 12:30", "Ăn trưa, vệ sinh"],
+        ["12:30 - 14:30", "Ngủ trưa"],
+        ["14:30 - 16:00", "Ăn chiều, hoạt động chiều"],
+        ["16:00 - 17:30", "Chơi tự do, trả trẻ"],
+      ];
+      const TALENTS = [
+        { icon: "fa-language", tone: "text-brand-primary", name: "Tiếng Anh", desc: "Giao tiếp phản xạ qua bài hát, trò chơi, giáo viên bản ngữ/chuẩn quốc tế." },
+        { icon: "fa-music", tone: "text-brand-gold", name: "Âm nhạc & Múa", desc: "Cảm thụ nhịp điệu, hát múa theo nhóm, biểu diễn cuối kỳ." },
+        { icon: "fa-palette", tone: "text-brand-green", name: "Mỹ thuật sáng tạo", desc: "Vẽ, nặn, thủ công; phát triển trí tưởng tượng và vận động tinh." },
+        { icon: "fa-person-running", tone: "text-brand-blue", name: "Thể chất & Kỹ năng", desc: "Vận động, trò chơi tập thể, kỹ năng tự bảo vệ bản thân." },
+      ];
+
+      const BASE_MENU = [
+        ["Súp gà ngô ngọt + Sữa hạt", "Cơm mềm, Tôm rim me, Canh rau ngót thịt băm", "Phở bò + Sinh tố đu đủ"],
+        ["Cháo thịt bằm rau củ", "Cơm, Thịt gà kho gừng, Canh bí đỏ", "Bánh flan + Sữa chua"],
+        ["Bánh mì trứng + Sữa tươi", "Cơm, Cá hồi áp chảo, Canh cải xanh", "Miến gà + Nước cam"],
+        ["Bún riêu cua", "Cơm, Thịt bò xào bông cải, Canh mồng tơi", "Chè đậu xanh + Trái cây"],
+        ["Xôi đậu xanh + Sữa đậu nành", "Cơm, Trứng hấp thịt, Canh khoai tây cà rốt", "Bánh bao nhân thịt + Sữa"],
+      ];
+      const COASTAL_BREAKFAST = ["Bánh canh chả cá", "Bún cá", "Cháo cá lóc rau thơm", "Bánh xèo mini + Sữa", "Mì Quảng gà"];
+      const DAY_LABELS = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6"];
+
+      const NEWS_CATS = {
+        system: { label: "Tin hệ thống", tone: "bg-brand-tint2 text-brand-primary" },
+        event: { label: "Sự kiện", tone: "bg-yellow-100 text-brand-gold" },
+        activity: { label: "Hoạt động", tone: "bg-blue-100 text-brand-blue" },
+        expert: { label: "Góc chuyên gia", tone: "bg-green-100 text-brand-green" },
+      };
+      const NEWS = [
+        { id: "trung-thu", cat: "event", date: "25/09/2026", title: "Rộn ràng không khí Tết Trung Thu tại các cơ sở Ánh Dương", img: "photo-1516627145497-ae6968895b74",
+          body: ["Các bé tại cả 4 cơ sở Ánh Dương đã có một mùa Trung Thu đáng nhớ với đêm hội rước đèn, múa lân và phá cỗ cùng cô giáo.", "Mỗi lớp tự trang trí mâm cỗ và làm đèn lồng từ vật liệu tái chế, giúp bé hiểu ý nghĩa của ngày Tết đoàn viên.", "Ban giám hiệu cảm ơn quý phụ huynh đã đồng hành cùng nhà trường trong chương trình."] },
+        { id: "tu-lap", cat: "expert", date: "20/09/2026", title: "Phương pháp rèn luyện tính tự lập cho trẻ 3-4 tuổi tại nhà", img: "photo-1503676260728-1c00da094a0b",
+          body: ["Ở độ tuổi 3-4, trẻ bắt đầu muốn tự làm mọi việc. Cha mẹ nên giao những việc nhỏ vừa sức như tự cất giày dép, tự xúc ăn.", "Hãy khen ngợi nỗ lực thay vì kết quả, và kiên nhẫn để bé tự thử, kể cả khi bé làm chưa hoàn hảo.", "Nhất quán giữa nhà và trường là chìa khóa: cô giáo và phụ huynh dùng cùng một cách nhắc nhở, cùng thói quen hằng ngày."] },
+        { id: "da-ngoai", cat: "activity", date: "15/09/2026", title: "Chuyến dã ngoại tìm hiểu thiên nhiên của khối Mẫu Giáo Lớn", img: "photo-1577896851231-70ef18881754",
+          body: ["Khối Mẫu Giáo Lớn đã có buổi dã ngoại khám phá vườn cây, quan sát côn trùng và nhặt lá để làm tranh.", "Hoạt động giúp bé rèn kỹ năng quan sát, làm việc nhóm và yêu thiên nhiên.", "Nhà trường đảm bảo tỷ lệ cô trên trẻ và có nhân viên y tế đi cùng."] },
+        { id: "tuyen-sinh-2026", cat: "system", date: "10/09/2026", title: "Hệ thống Ánh Dương mở đăng ký tuyển sinh năm học 2026 - 2027", img: "photo-1509062522246-3755977927d7",
+          body: ["Hệ thống mở đăng ký tuyển sinh cho các khối Nhà trẻ, Mẫu giáo Bé, Nhỡ, Lớn tại cả 4 cơ sở.", "Phụ huynh có thể đặt lịch tham quan trường để trải nghiệm môi trường học và gặp gỡ đội ngũ giáo viên.", "Số lượng chỗ có hạn theo từng lớp, vui lòng đăng ký sớm."] },
+        { id: "dinh-duong", cat: "expert", date: "05/09/2026", title: "Thực đơn cân bằng cho bé mầm non: nên và không nên", img: "photo-1544717305-2782549b5136",
+          body: ["Bữa ăn của bé cần đủ bốn nhóm chất: đạm, tinh bột, chất béo tốt và vitamin khoáng chất.", "Hạn chế đồ ngọt và nước có gas; ưu tiên trái cây tươi và sữa chua ít đường.", "Nếu bé dị ứng thực phẩm, hãy báo cô giáo để nhà bếp điều chỉnh khẩu phần riêng."] },
+        { id: "khai-giang", cat: "event", date: "05/09/2026", title: "Lễ khai giảng năm học mới: Ánh Dương chào đón các bé", img: "photo-1580582932707-520aed937b7b",
+          body: ["Năm học mới bắt đầu với lễ khai giảng ấm áp tại các cơ sở, nơi các bé lần đầu đến trường được cô giáo đón bằng nụ cười.", "Nhà trường tổ chức buổi gặp mặt phụ huynh để chia sẻ kế hoạch năm học và quy trình đón trả trẻ.", "Chúc các bé có một năm học vui vẻ và nhiều trải nghiệm bổ ích."] },
+      ];
+      const NEWS_PAGE_SIZE = 3;
+
+      const ALBUMS = [
+        { title: "Đêm hội Trung Thu", campus: "phutho1", count: 42 },
+        { title: "Dã ngoại vườn cây", campus: "phutho2", count: 36 },
+        { title: "Ngày hội Tiếng Anh", campus: "quynhon", count: 28 },
+        { title: "Lễ khai giảng", campus: "nhatrang", count: 51 },
+        { title: "Bé tập bơi mùa hè", campus: "nhatrang", count: 24 },
+        { title: "Ngày hội thể thao", campus: "phutho1", count: 33 },
+        { title: "Chào năm học mới", campus: "quynhon", count: 40 },
+        { title: "Triển lãm tranh của bé", campus: "phutho2", count: 19 },
+      ];
+
+      const ADMISSION_STEPS = [
+        ["fa-headset", "Tư vấn tuyển sinh", "Phụ huynh để lại thông tin hoặc gọi hotline, bộ phận tuyển sinh liên hệ trong 24 giờ."],
+        ["fa-school", "Tham quan trường", "Đặt lịch tham quan, gặp cô giáo, xem phòng học và bếp ăn."],
+        ["fa-child-reaching", "Học trải nghiệm", "Bé học thử một buổi cùng lớp để làm quen môi trường."],
+        ["fa-file-signature", "Nộp hồ sơ", "Hoàn thiện hồ sơ nhập học và ký hợp đồng dịch vụ."],
+        ["fa-money-bill-wave", "Đóng phí giữ chỗ", "Thanh toán học phí đợt đầu theo thông báo của cơ sở."],
+        ["fa-hand-holding-heart", "Nhập học", "Bé đến lớp, cô giáo đồng hành giai đoạn làm quen đầu tiên."],
+      ];
+      const FEE_ROWS = [
+        ["Nhà trẻ (12 - 36 tháng)", "3.500.000đ", "35.000đ", "Tỷ lệ cô/trẻ thấp hơn"],
+        ["Mẫu giáo Bé (3 - 4 tuổi)", "3.000.000đ", "35.000đ", ""],
+        ["Mẫu giáo Nhỡ (4 - 5 tuổi)", "3.000.000đ", "35.000đ", "Có Tiếng Anh làm quen"],
+        ["Mẫu giáo Lớn (5 - 6 tuổi)", "3.200.000đ", "35.000đ", "Chương trình vào lớp 1"],
+      ];
+      const SCHOLARSHIPS = [
+        ["fa-star", "Học bổng Bé ngoan - Bé tài năng", "Xét theo kết quả rèn luyện và năng khiếu nổi bật trong năm học."],
+        ["fa-people-roof", "Ưu đãi anh chị em", "Giảm học phí cho bé thứ hai trở đi trong cùng gia đình."],
+        ["fa-clock", "Ưu đãi đăng ký sớm", "Ưu đãi cho phụ huynh đăng ký và giữ chỗ trước thời hạn công bố."],
+      ];
+      const FAQS = [
+        ["Bé bao nhiêu tháng tuổi thì nhận vào trường?", "Trường nhận bé từ 12 tháng tuổi vào khối Nhà trẻ. Bé dưới 12 tháng vui lòng liên hệ để được tư vấn."],
+        ["Giờ đón và trả trẻ như thế nào?", "Giờ đón trả cụ thể theo từng cơ sở và được thông báo khi nhập học. Phụ huynh có thể đăng ký đón muộn theo quy định."],
+        ["Trường có đưa đón bé bằng xe không?", "Thông tin xe đưa đón khác nhau theo cơ sở, vui lòng hỏi bộ phận tuyển sinh của cơ sở bạn quan tâm."],
+        ["Bé dị ứng thực phẩm thì ăn như thế nào?", "Phụ huynh báo dị ứng khi nhập học. Nhà bếp sẽ điều chỉnh khẩu phần riêng và cô giáo theo dõi sát trong bữa ăn."],
+        ["Bé ốm hoặc cần uống thuốc ở trường thì sao?", "Phụ huynh gửi đơn dặn thuốc qua App Phụ huynh, cô giáo cho bé uống đúng giờ và ghi nhận lại."],
+        ["Làm sao để đặt lịch tham quan trường?", "Điền form Đặt lịch tham quan ở đầu trang này hoặc gọi hotline. Bộ phận tuyển sinh sẽ xác nhận lịch với bạn."],
+        ["Hồ sơ nhập học gồm những gì?", "Gồm giấy khai sinh, sổ tiêm chủng, ảnh bé và giấy tờ của phụ huynh. Danh sách chi tiết được gửi khi bạn đăng ký."],
+      ];
+
+      const JOBS = [
+        { id: "giao-vien", title: "Giáo Viên Mầm Non (Các Cơ Sở)", type: "Toàn thời gian", campus: "Tất cả cơ sở", salary: "8.000.000 - 12.000.000 VNĐ", deadline: "31/10/2026",
+          req: ["Tốt nghiệp Cao đẳng/Đại học Sư phạm Mầm non", "Yêu trẻ, kiên nhẫn, giao tiếp tốt", "Ưu tiên có kinh nghiệm từ 1 năm"],
+          desc: ["Chăm sóc, giáo dục trẻ theo kế hoạch của lớp", "Cập nhật nhật ký hoạt động và trao đổi với phụ huynh qua App", "Phối hợp tổ chức sự kiện, hoạt động trải nghiệm"] },
+        { id: "bep-bao-mau", title: "Nhân Viên Bếp / Bảo Mẫu", type: "Toàn thời gian", campus: "Tất cả cơ sở", salary: "6.000.000 - 8.000.000 VNĐ", deadline: "31/10/2026",
+          req: ["Có chứng chỉ nấu ăn/bảo mẫu", "Sạch sẽ, chu đáo, trung thực", "Có giấy khám sức khỏe còn hiệu lực"],
+          desc: ["Chế biến suất ăn theo thực đơn và quy trình ATTP", "Hỗ trợ cô giáo chăm sóc trẻ trong giờ ăn, ngủ, vệ sinh"] },
+        { id: "giao-vien-tieng-anh", title: "Giáo Viên Tiếng Anh Mầm Non", type: "Toàn thời gian / Bán thời gian", campus: "Phú Thọ, Quy Nhơn Nam, Nha Trang", salary: "Thỏa thuận theo năng lực", deadline: "15/11/2026",
+          req: ["Cử nhân Sư phạm Anh hoặc có chứng chỉ giảng dạy (TESOL/TEFL)", "Phát âm chuẩn, giao tiếp tự nhiên với trẻ nhỏ", "Ưu tiên có kinh nghiệm dạy mầm non"],
+          desc: ["Giảng dạy Tiếng Anh theo khung chương trình Cambridge", "Thiết kế trò chơi, bài hát phù hợp lứa tuổi"] },
+      ];
+      const BENEFITS = ["Lương thưởng theo năng lực, thưởng lễ tết", "Bảo hiểm xã hội đầy đủ", "Đào tạo chuyên môn định kỳ", "Môi trường làm việc thân thiện"];
+
+      const PAGE_META = {
+        home: ["Hệ Thống Giáo Dục Mầm Non Ánh Dương", "Hệ thống mầm non Ánh Dương: 4 cơ sở tại Phú Thọ, Quy Nhơn Nam, Nha Trang. Đặt lịch tham quan trường hôm nay."],
+        about: ["Giới Thiệu | Mầm Non Ánh Dương", "Câu chuyện thương hiệu, sứ mệnh, tầm nhìn, giá trị cốt lõi và ban quản trị hệ thống mầm non Ánh Dương."],
+        campuses: ["Hệ Thống Cơ Sở | Mầm Non Ánh Dương", "Thông tin 4 cơ sở: địa chỉ, tiện ích, đội ngũ, bản đồ và học phí."],
+        programs: ["Chương Trình Học | Mầm Non Ánh Dương", "Chương trình theo độ tuổi từ Nhà trẻ đến Mẫu giáo Lớn, cùng các môn Năng khiếu và Tiếng Anh."],
+        program: ["Chi Tiết Chương Trình | Mầm Non Ánh Dương", "Mục tiêu, hoạt động và lịch sinh hoạt hằng ngày của từng khối tuổi."],
+        nutrition: ["Dinh Dưỡng & Y Tế | Mầm Non Ánh Dương", "Thực đơn tuần theo cơ sở, theo dõi y tế, quy trình an toàn và đón trả trẻ."],
+        news: ["Tin Tức & Hoạt Động | Mầm Non Ánh Dương", "Tin hệ thống, sự kiện, hoạt động và góc chuyên gia nuôi dạy con."],
+        article: ["Bài Viết | Mầm Non Ánh Dương", "Tin tức và hoạt động từ hệ thống mầm non Ánh Dương."],
+        gallery: ["Thư Viện Ảnh & Video | Mầm Non Ánh Dương", "Album ảnh hoạt động theo từng cơ sở."],
+        admissions: ["Tuyển Sinh 2026 - 2027 | Mầm Non Ánh Dương", "Đặt lịch tham quan, quy trình nhập học, bảng phí, học bổng và câu hỏi thường gặp."],
+        careers: ["Tuyển Dụng | Mầm Non Ánh Dương", "Cơ hội nghề nghiệp tại hệ thống mầm non Ánh Dương."],
+        job: ["Vị Trí Tuyển Dụng | Mầm Non Ánh Dương", "Chi tiết vị trí và ứng tuyển trực tuyến."],
+        contact: ["Liên Hệ | Mầm Non Ánh Dương", "Gửi câu hỏi hoặc liên hệ Ban quản trị và các cơ sở của hệ thống Ánh Dương."],
+        privacy: ["Chính Sách Bảo Mật | Mầm Non Ánh Dương", "Cách hệ thống Ánh Dương thu thập, sử dụng và lưu trữ dữ liệu cá nhân."],
+        thanks: ["Cảm Ơn | Mầm Non Ánh Dương", "Chúng tôi đã nhận thông tin của bạn."],
+        notfound: ["Không Tìm Thấy Trang | Mầm Non Ánh Dương", "Trang bạn tìm không tồn tại."],
+      };
+
+      // ===== TIỆN ÍCH =====
+      // Dữ liệu render qua innerHTML đều là hằng số ở trên; mọi chuỗi động từ người dùng phải qua esc()
+      function esc(value) {
+        return String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+      }
+      const $ = (id) => document.getElementById(id);
+      const unsplash = (id, w) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w || 500}&q=80`;
+      const mapsDirectionsUrl = (addr) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(addr);
+      const mapsEmbedUrl = (addr) => "https://www.google.com/maps?q=" + encodeURIComponent(addr) + "&output=embed";
+      const backButton = (target, label) =>
+        `<button onclick="navigateTo('${target}')" class="tap inline-flex items-center gap-2 text-sm font-semibold text-brand-primary hover:underline"><i class="fa-solid fa-arrow-left"></i>${esc(label)}</button>`;
+
+      let toastTimer;
+      function toast(message) {
+        let el = $("toast");
+        if (!el) {
+          el = document.createElement("div");
+          el.id = "toast";
+          el.setAttribute("role", "status");
+          el.className = "fixed left-1/2 -translate-x-1/2 bottom-24 md:bottom-8 z-[60] bg-brand-deep text-white text-xs font-medium px-5 py-3 rounded-full shadow-xl transition-opacity opacity-0 pointer-events-none max-w-[90vw] text-center";
+          document.body.appendChild(el);
         }
-
-        // Highlight bottom nav
-        document
-          .querySelectorAll(".bn-item")
-          .forEach((b) =>
-            b.classList.toggle("active", b.dataset.bn === pageId),
-          );
-        closeMobileMenu();
-        document
-          .querySelectorAll(".dd.open")
-          .forEach((d) => d.classList.remove("open"));
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        el.textContent = message;
+        el.classList.remove("opacity-0");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el.classList.add("opacity-0"), 3500);
       }
 
-      // Mobile menu helpers
+      // ===== ĐỊNH TUYẾN (hash: #/trang hoặc #/trang/tham-so) =====
+      const RENDERERS = {
+        campuses: (param) => renderCampuses(param),
+        program: (param) => renderProgram(param),
+        article: (param) => renderArticle(param),
+        job: (param) => renderJob(param),
+      };
+
+      function navigateTo(pageId, param) {
+        const hash = "#/" + pageId + (param ? "/" + param : "");
+        if (location.hash === hash) route();
+        else location.hash = hash;
+      }
+
+      function route() {
+        const parts = location.hash.replace(/^#\/?/, "").split("/");
+        const pageId = parts[0] || "home";
+        const param = parts[1] ? decodeURIComponent(parts[1]) : "";
+        let target = $("page-" + pageId);
+        let id = pageId;
+        if (!target || (RENDERERS[pageId] && RENDERERS[pageId](param) === false)) {
+          id = "notfound";
+          target = $("page-notfound");
+        }
+        document.querySelectorAll(".page-section").forEach((s) => s.classList.remove("active"));
+        target.classList.add("active");
+        document.querySelectorAll(".bn-item").forEach((b) => b.classList.toggle("active", b.dataset.bn === id));
+        closeMobileMenu();
+        document.querySelectorAll(".dd.open").forEach((d) => d.classList.remove("open"));
+        updateSeo(id);
+        if (currentLang === "en") translateTree(document.body, "en");
+        if (id === "campuses" && param) {
+          $("campus-detail").scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      function updateSeo(pageId) {
+        const meta = PAGE_META[pageId] || PAGE_META.home;
+        document.title = meta[0];
+        const set = (selector, value) => {
+          const el = document.querySelector(selector);
+          if (el) el.setAttribute("content", value);
+        };
+        set('meta[name="description"]', meta[1]);
+        set('meta[property="og:title"]', meta[0]);
+        set('meta[property="og:description"]', meta[1]);
+      }
+
+      // ===== MENU / DROPDOWN (giữ nguyên) =====
       function toggleMobileMenu() {
-        const m = document.getElementById("mobile-menu");
+        const m = $("mobile-menu");
         const open = m.classList.toggle("hidden") === false;
-        document
-          .getElementById("menu-toggle")
-          .setAttribute("aria-expanded", open);
+        $("menu-toggle").setAttribute("aria-expanded", open);
       }
       function closeMobileMenu() {
-        const m = document.getElementById("mobile-menu");
+        const m = $("mobile-menu");
         if (m) m.classList.add("hidden");
-        const t = document.getElementById("menu-toggle");
+        const t = $("menu-toggle");
         if (t) t.setAttribute("aria-expanded", "false");
       }
       function toggleAcc(id) {
-        const el = document.getElementById(id);
+        const el = $(id);
         const hidden = el.classList.toggle("hidden");
         el.previousElementSibling.setAttribute("aria-expanded", !hidden);
       }
       function navTo(page, campusKey) {
-        if (campusKey) showCampusDetail(campusKey);
-        else navigateTo(page);
+        navigateTo(page, campusKey);
       }
-      // Dropdown desktop: hỗ trợ chạm trên tablet
       function toggleDd(btn) {
         btn.closest(".dd").classList.toggle("open");
       }
@@ -1414,69 +1875,484 @@
         });
       });
 
+      // ===== CƠ SỞ =====
+      let campusTab = "overview";
       function showCampusDetail(campusKey) {
-        navigateTo("campuses");
-        const box = document.getElementById("campus-detail-box");
-        const title = document.getElementById("cd-title");
-        const addr = document.getElementById("cd-address");
-
-        const campusData = {
-          phutho1: {
-            name: "Mầm Non Ánh Dương - Cơ Sở 1 Việt Trì (Phú Thọ)",
-            addr: "Địa chỉ: Tái định cư Gia Cẩm, TP. Việt Trì, Tỉnh Phú Thọ",
-          },
-          phutho2: {
-            name: "Mầm Non Ánh Dương - Cơ Sở 2 Thị Xã (Phú Thọ)",
-            addr: "Địa chỉ: Đường Hùng Vương, Thị Xã Phú Thọ, Tỉnh Phú Thọ",
-          },
-          quynhon: {
-            name: "Mầm Non Ánh Dương - Cơ Sở Quy Nhơn Nam (Gia Lai)",
-            addr: "Địa chỉ: Đường Nguyễn Thái Học, TP. Quy Nhơn Nam, Tỉnh Gia Lai",
-          },
-          nhatrang: {
-            name: "Mầm Non Ánh Dương - Cơ Sở Nha Trang (Khánh Hòa)",
-            addr: "Địa chỉ: Đường Trần Phú, TP. Nha Trang, Tỉnh Khánh Hòa",
-          },
-        };
-
-        if (campusData[campusKey]) {
-          title.innerText = campusData[campusKey].name;
-          addr.innerText = campusData[campusKey].addr;
-          box.classList.remove("hidden");
+        campusTab = "overview";
+        navigateTo("campuses", campusKey);
+      }
+      function setCampusTab(tab) {
+        campusTab = tab;
+        renderCampuses(currentCampus);
+      }
+      let currentCampus = "";
+      function renderCampuses(key) {
+        const box = $("campus-detail");
+        if (!key) {
+          box.classList.add("hidden");
+          return true;
         }
+        const c = CAMPUSES[key];
+        if (!c) return false;
+        currentCampus = key;
+        const tabs = [["overview", "Tổng quan"], ["team", "Đội ngũ"], ["contact", "Liên hệ & Bản đồ"], ["fees", "Học phí & Ưu đãi"]];
+        const panels = {
+          overview: () => `
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+              ${AMENITIES.map((a) => `<div class="bg-brand-cream p-3 rounded-xl"><i class="fa-solid ${a[0]} ${a[1]} mr-1"></i> ${esc(a[2])}</div>`).join("")}
+            </div>
+            <h3 class="font-bold text-sm mt-6 mb-3">Hình ảnh cơ sở</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+              ${["Phòng học", "Sân chơi", "Nhà ăn", "Phòng ngủ", "Khu vệ sinh", "Góc sáng tạo"].map((n) => `<div class="aspect-[4/3] rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center text-brand-primary text-xs gap-1"><i class="fa-regular fa-image text-xl"></i>${n}</div>`).join("")}
+            </div>
+            <div class="mt-4 rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint p-4 text-xs text-brand-primary flex items-center gap-3"><i class="fa-solid fa-vr-cardboard text-2xl"></i>Tham quan ảo 360° (chưa có tư liệu)</div>`,
+          team: () => `
+            <div class="grid sm:grid-cols-2 gap-4">
+              ${["Hiệu trưởng", "Phó hiệu trưởng chuyên môn"].map((r) => `<div class="flex items-center gap-3 bg-brand-cream p-3 rounded-xl"><div class="w-12 h-12 rounded-full bg-brand-tint2 text-brand-primary flex items-center justify-center"><i class="fa-solid fa-user"></i></div><div><p class="text-xs font-bold">Họ tên đang cập nhật</p><p class="text-xs text-gray-500">${r}</p></div></div>`).join("")}
+            </div>
+            <h3 class="font-bold text-sm mt-6 mb-3">Giáo viên các khối</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              ${Object.values(PROGRAMS).map((p) => `<div class="bg-white border border-gray-100 rounded-xl p-3 text-center text-xs"><div class="w-14 h-14 mx-auto rounded-full border-2 border-dashed border-brand-tint3 bg-brand-tint flex items-center justify-center text-brand-primary mb-2"><i class="fa-solid fa-chalkboard-user"></i></div><p class="font-semibold">${p.name}</p><p class="text-gray-500">Ảnh và họ tên đang cập nhật</p></div>`).join("")}
+            </div>`,
+          contact: () => `
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-3 text-xs">
+                <p><i class="fa-solid fa-location-dot text-brand-primary mr-2"></i>${esc(c.addr)}</p>
+                <p><i class="fa-solid fa-phone text-brand-green mr-2"></i>Hotline hệ thống: ${HOTLINE}</p>
+                <p class="break-words"><i class="fa-solid fa-envelope text-brand-primary mr-2"></i>tuyensinh@anhduongschool.edu.vn</p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <a href="${mapsDirectionsUrl(c.addr)}" target="_blank" rel="noopener" class="tap inline-flex items-center gap-2 px-4 rounded-full bg-brand-primary text-white font-semibold hover:bg-brand-deep transition"><i class="fa-solid fa-diamond-turn-right"></i>Chỉ đường</a>
+                  <a href="tel:${HOTLINE.replace(/\s/g, "")}" class="tap inline-flex items-center gap-2 px-4 rounded-full bg-brand-green text-white font-semibold"><i class="fa-solid fa-phone"></i>Gọi ngay</a>
+                  <button onclick="navigateTo('admissions')" class="tap inline-flex items-center gap-2 px-4 rounded-full border-2 border-brand-primary text-brand-primary font-semibold hover:bg-brand-tint transition">Đặt lịch tham quan</button>
+                </div>
+              </div>
+              <iframe title="Bản đồ ${esc(c.short)}" src="${mapsEmbedUrl(c.addr)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-64 rounded-xl border border-gray-200"></iframe>
+            </div>`,
+          fees: () => `
+            <p class="text-xs text-gray-500 mb-3">Số liệu minh họa, chờ xác nhận mức phí chính thức của cơ sở.</p>
+            <div class="overflow-x-auto rounded-xl border border-gray-100">
+              <table class="w-full text-xs min-w-[460px]">
+                <caption class="sr-only">Khung học phí</caption>
+                <thead class="bg-brand-tint text-brand-primary text-left"><tr><th scope="col" class="p-3">Khối</th><th scope="col" class="p-3">Học phí / tháng</th><th scope="col" class="p-3">Tiền ăn / ngày</th></tr></thead>
+                <tbody class="divide-y divide-gray-100">${FEE_ROWS.map((r) => `<tr><td class="p-3 font-semibold">${r[0]}</td><td class="p-3">${r[1]}</td><td class="p-3">${r[2]}</td></tr>`).join("")}</tbody>
+              </table>
+            </div>
+            <h3 class="font-bold text-sm mt-6 mb-3">Chính sách ưu đãi tại cơ sở</h3>
+            <ul class="text-xs text-gray-600 space-y-2">${SCHOLARSHIPS.map((s) => `<li><i class="fa-solid ${s[0]} text-brand-gold mr-2"></i><strong>${s[1]}:</strong> ${s[2]}</li>`).join("")}</ul>`,
+        };
+        box.innerHTML = `
+          <div class="bg-white p-5 md:p-6 rounded-2xl border-2 border-brand-primary/30 space-y-5">
+            <div>
+              <h2 class="text-xl font-bold text-brand-primary">${esc(c.name)}</h2>
+              <p class="text-xs text-gray-600 mt-1">Địa chỉ: ${esc(c.addr)}</p>
+            </div>
+            <div role="tablist" aria-label="Thông tin cơ sở" class="flex gap-2 overflow-x-auto pb-1">
+              ${tabs.map((t) => `<button role="tab" aria-selected="${t[0] === campusTab}" onclick="setCampusTab('${t[0]}')" class="tab-btn tap whitespace-nowrap px-4 rounded-full text-xs font-semibold border border-brand-tint3 ${t[0] === campusTab ? "active" : ""}">${t[1]}</button>`).join("")}
+            </div>
+            <div role="tabpanel">${panels[campusTab]()}</div>
+          </div>`;
+        box.classList.remove("hidden");
+        return true;
       }
 
-      function openPortalModal(type) {
-        const modal = document.getElementById("portal-modal");
-        const title = document.getElementById("portal-title");
-        const desc = document.getElementById("portal-desc");
-        const icon = document.getElementById("portal-icon");
+      // ===== CHƯƠNG TRÌNH =====
+      function renderProgramCards() {
+        $("program-cards").innerHTML = Object.entries(PROGRAMS)
+          .map(([key, p]) => `
+            <button onclick="navigateTo('program','${key}')" class="text-left bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-3 hover:shadow-md hover:border-brand-tint3 transition">
+              <div class="w-10 h-10 ${p.tone} font-bold rounded-xl flex items-center justify-center text-sm">${p.code}</div>
+              <h3 class="font-bold text-base">${p.name}</h3>
+              <p class="text-xs text-brand-primary font-semibold">(${p.age})</p>
+              <p class="text-xs text-gray-600 leading-relaxed">${p.summary}</p>
+              <span class="text-xs font-semibold text-brand-primary">Xem chi tiết <i class="fa-solid fa-arrow-right ml-1"></i></span>
+            </button>`).join("");
+        $("talent-cards").innerHTML = TALENTS.map((t) => `
+          <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-2">
+            <i class="fa-solid ${t.icon} ${t.tone} text-2xl"></i>
+            <h3 class="font-bold text-sm">${t.name}</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">${t.desc}</p>
+          </div>`).join("");
+      }
+      function renderProgram(key) {
+        const p = PROGRAMS[key];
+        if (!p) return false;
+        const keys = Object.keys(PROGRAMS);
+        const idx = keys.indexOf(key);
+        $("program-detail").innerHTML = `
+          ${backButton("programs", "Tất cả chương trình")}
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 ${p.tone} font-bold rounded-2xl flex items-center justify-center">${p.code}</div>
+            <div><h1 class="text-2xl md:text-3xl font-bold text-gray-900">${p.name}</h1><p class="text-sm text-brand-primary font-semibold">${p.age}</p></div>
+          </div>
+          <p class="text-sm text-gray-600 leading-relaxed">${p.summary}</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm"><h2 class="font-bold text-base text-brand-primary mb-3"><i class="fa-solid fa-bullseye mr-2"></i>Mục tiêu phát triển</h2><ul class="text-xs text-gray-600 space-y-2">${p.goals.map((g) => `<li><i class="fa-solid fa-check text-brand-green mr-2"></i>${g}</li>`).join("")}</ul></div>
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm"><h2 class="font-bold text-base text-brand-primary mb-3"><i class="fa-solid fa-puzzle-piece mr-2"></i>Hoạt động tiêu biểu</h2><div class="flex flex-wrap gap-2 text-xs">${p.activities.map((a) => `<span class="bg-brand-tint px-3 py-1.5 rounded-full text-brand-primary font-medium">${a}</span>`).join("")}</div></div>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
+            <h2 class="font-bold text-base text-brand-primary mb-3"><i class="fa-regular fa-clock mr-2"></i>Lịch sinh hoạt mẫu trong ngày</h2>
+            <ul class="divide-y divide-gray-100 text-xs">${DAY_SCHEDULE.map((s) => `<li class="flex gap-4 py-2"><span class="w-28 shrink-0 font-semibold text-gray-700">${s[0]}</span><span class="text-gray-600">${s[1]}</span></li>`).join("")}</ul>
+            <p class="text-xs text-gray-500 mt-3">Lịch mẫu, có thể khác nhau theo cơ sở.</p>
+          </div>
+          <div class="flex flex-wrap justify-between gap-3">
+            <button onclick="navigateTo('admissions')" class="tap px-6 rounded-full bg-brand-primary hover:bg-brand-deep text-white font-semibold text-sm transition">Đặt lịch tham quan</button>
+            <div class="flex gap-2">
+              ${idx > 0 ? `<button onclick="navigateTo('program','${keys[idx - 1]}')" class="tap px-4 rounded-full border border-brand-tint3 text-sm font-semibold hover:bg-brand-tint"><i class="fa-solid fa-arrow-left mr-1"></i>${PROGRAMS[keys[idx - 1]].name}</button>` : ""}
+              ${idx < keys.length - 1 ? `<button onclick="navigateTo('program','${keys[idx + 1]}')" class="tap px-4 rounded-full border border-brand-tint3 text-sm font-semibold hover:bg-brand-tint">${PROGRAMS[keys[idx + 1]].name}<i class="fa-solid fa-arrow-right ml-1"></i></button>` : ""}
+            </div>
+          </div>`;
+        return true;
+      }
 
+      // ===== THỰC ĐƠN =====
+      let menuDay = 0;
+      function initMenu() {
+        $("menu-campus").innerHTML = Object.entries(CAMPUSES).map(([k, c]) => `<option value="${k}">${esc(c.short)}</option>`).join("");
+        const dow = new Date().getDay();
+        menuDay = dow >= 1 && dow <= 5 ? dow - 1 : 0;
+        renderMenu();
+      }
+      function setMenuDay(i) {
+        menuDay = i;
+        renderMenu();
+      }
+      function renderMenu() {
+        const campus = CAMPUSES[$("menu-campus").value];
+        $("menu-days").innerHTML = DAY_LABELS.map((d, i) => `<button role="tab" aria-selected="${i === menuDay}" onclick="setMenuDay(${i})" class="tab-btn tap whitespace-nowrap px-4 rounded-full text-xs font-semibold border border-brand-tint3 ${i === menuDay ? "active" : ""}">${d}</button>`).join("");
+        const meals = BASE_MENU[menuDay].slice();
+        if (campus.coastal) meals[0] = COASTAL_BREAKFAST[menuDay];
+        const labels = [["Bữa sáng", "fa-mug-hot", "text-brand-gold"], ["Bữa trưa", "fa-bowl-rice", "text-brand-primary"], ["Bữa chiều", "fa-apple-whole", "text-brand-green"]];
+        $("menu-body").innerHTML = labels.map((l, i) => `<div class="bg-brand-cream p-4 rounded-xl"><p class="font-bold text-gray-700 mb-1"><i class="fa-solid ${l[1]} ${l[2]} mr-2"></i>${l[0]}</p><p class="text-gray-600">${esc(meals[i])}</p></div>`).join("");
+      }
+
+      // ===== TIN TỨC =====
+      let newsFilter = "all";
+      let newsPage = 1;
+      function setNewsFilter(f) {
+        newsFilter = f;
+        newsPage = 1;
+        renderNews();
+      }
+      function setNewsPage(p) {
+        newsPage = p;
+        renderNews();
+      }
+      function renderNews() {
+        const chip = (key, label) => `<button onclick="setNewsFilter('${key}')" aria-pressed="${newsFilter === key}" class="tab-btn tap px-4 rounded-full text-xs font-semibold border border-brand-tint3 ${newsFilter === key ? "active" : ""}">${label}</button>`;
+        $("news-filters").innerHTML = chip("all", "Tất cả") + Object.entries(NEWS_CATS).map(([k, v]) => chip(k, v.label)).join("");
+        const items = NEWS.filter((n) => newsFilter === "all" || n.cat === newsFilter);
+        const pages = Math.max(1, Math.ceil(items.length / NEWS_PAGE_SIZE));
+        newsPage = Math.min(newsPage, pages);
+        const slice = items.slice((newsPage - 1) * NEWS_PAGE_SIZE, newsPage * NEWS_PAGE_SIZE);
+        $("news-list").innerHTML = slice.length
+          ? slice.map((n) => newsCard(n)).join("")
+          : `<p class="col-span-full text-center text-sm text-gray-500 py-10">Chưa có bài viết trong danh mục này.</p>`;
+        $("news-pager").innerHTML = pages > 1
+          ? Array.from({ length: pages }, (_, i) => `<button onclick="setNewsPage(${i + 1})" aria-label="Trang ${i + 1}" aria-current="${newsPage === i + 1}" class="tab-btn w-11 h-11 rounded-full text-sm font-semibold border border-brand-tint3 ${newsPage === i + 1 ? "active" : ""}">${i + 1}</button>`).join("")
+          : "";
+      }
+      function newsCard(n) {
+        const cat = NEWS_CATS[n.cat];
+        return `<button onclick="navigateTo('article','${n.id}')" class="text-left bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm p-4 space-y-3 hover:shadow-md transition">
+          <div class="h-40 bg-gray-200 rounded-xl overflow-hidden"><img src="${unsplash(n.img)}" alt="" loading="lazy" class="w-full h-full object-cover" /></div>
+          <span class="text-xs ${cat.tone} font-bold px-2 py-0.5 rounded">${cat.label}</span>
+          <h3 class="font-bold text-sm leading-snug">${n.title}</h3>
+          <p class="text-xs text-gray-500">${n.date}</p>
+        </button>`;
+      }
+      function renderArticle(id) {
+        const n = NEWS.find((x) => x.id === id);
+        if (!n) return false;
+        const cat = NEWS_CATS[n.cat];
+        const related = NEWS.filter((x) => x.id !== id && x.cat === n.cat).concat(NEWS.filter((x) => x.id !== id && x.cat !== n.cat)).slice(0, 2);
+        $("article-detail").innerHTML = `
+          ${backButton("news", "Tất cả tin tức")}
+          <div class="space-y-3">
+            <span class="text-xs ${cat.tone} font-bold px-2 py-0.5 rounded">${cat.label}</span>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 leading-snug">${n.title}</h1>
+            <p class="text-xs text-gray-500"><i class="fa-regular fa-calendar mr-1"></i>${n.date}</p>
+          </div>
+          <img src="${unsplash(n.img, 1000)}" alt="" class="w-full max-h-96 object-cover rounded-2xl" />
+          <div class="space-y-4 text-sm text-gray-700 leading-relaxed">${n.body.map((p) => `<p>${p}</p>`).join("")}</div>
+          <div class="pt-6 border-t border-gray-100 space-y-4">
+            <h2 class="font-bold text-base text-brand-primary">Bài viết liên quan</h2>
+            <div class="grid sm:grid-cols-2 gap-4">${related.map(newsCard).join("")}</div>
+          </div>`;
+        return true;
+      }
+
+      // ===== THƯ VIỆN ẢNH =====
+      let galleryFilter = "all";
+      function setGalleryFilter(f) {
+        galleryFilter = f;
+        renderGallery();
+      }
+      function renderGallery() {
+        const chip = (key, label) => `<button onclick="setGalleryFilter('${key}')" aria-pressed="${galleryFilter === key}" class="tab-btn tap px-4 rounded-full text-xs font-semibold border border-brand-tint3 ${galleryFilter === key ? "active" : ""}">${label}</button>`;
+        $("gallery-filters").innerHTML = chip("all", "Tất cả") + Object.entries(CAMPUSES).map(([k, c]) => chip(k, c.short)).join("");
+        $("gallery-list").innerHTML = ALBUMS.filter((a) => galleryFilter === "all" || a.campus === galleryFilter)
+          .map((a) => `<div class="space-y-2"><div class="aspect-[4/3] rounded-xl border-2 border-dashed border-brand-tint3 bg-brand-tint flex flex-col items-center justify-center text-brand-primary text-xs gap-1"><i class="fa-regular fa-images text-2xl"></i>${a.count} ảnh</div><p class="text-xs font-bold">${a.title}</p><p class="text-xs text-gray-500">${CAMPUSES[a.campus].short}</p></div>`).join("");
+      }
+
+      // ===== TUYỂN SINH =====
+      function renderAdmissionExtras() {
+        $("admission-steps").innerHTML = ADMISSION_STEPS.map((s, i) => `<li class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-2"><div class="flex items-center gap-3"><span class="w-9 h-9 rounded-full bg-brand-primary text-white font-bold text-sm flex items-center justify-center">${i + 1}</span><i class="fa-solid ${s[0]} text-brand-gold text-lg"></i></div><h3 class="font-bold text-sm">${s[1]}</h3><p class="text-xs text-gray-600 leading-relaxed">${s[2]}</p></li>`).join("");
+        $("fee-rows").innerHTML = FEE_ROWS.map((r) => `<tr><td class="p-3 font-semibold">${r[0]}</td><td class="p-3">${r[1]}</td><td class="p-3">${r[2]}</td><td class="p-3 text-gray-500">${r[3]}</td></tr>`).join("");
+        $("scholarship-cards").innerHTML = SCHOLARSHIPS.map((s) => `<div class="bg-brand-cream p-5 rounded-2xl border border-brand-tint2 space-y-2"><i class="fa-solid ${s[0]} text-brand-gold text-xl"></i><h3 class="font-bold text-sm">${s[1]}</h3><p class="text-xs text-gray-600 leading-relaxed">${s[2]}</p></div>`).join("");
+        $("faq-list").innerHTML = FAQS.map((f) => `<details class="group bg-white rounded-xl border border-gray-100 shadow-sm"><summary class="tap cursor-pointer list-none px-4 py-3 text-sm font-semibold flex items-center justify-between gap-3">${f[0]}<i class="fa-solid fa-chevron-down text-xs text-brand-primary transition group-open:rotate-180"></i></summary><p class="px-4 pb-4 text-xs text-gray-600 leading-relaxed">${f[1]}</p></details>`).join("");
+      }
+
+      // ===== TUYỂN DỤNG =====
+      function renderJobList() {
+        $("job-list").innerHTML = JOBS.map((j) => `
+          <button onclick="navigateTo('job','${j.id}')" class="text-left bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-2 hover:shadow-md hover:border-brand-tint3 transition">
+            <span class="bg-brand-primary/10 text-brand-primary text-xs font-bold px-2 py-0.5 rounded">${j.type}</span>
+            <h3 class="font-bold text-sm">${j.title}</h3>
+            <p class="text-xs text-gray-500"><i class="fa-solid fa-location-dot mr-1"></i>${j.campus}</p>
+            <p class="text-xs font-semibold text-brand-green">Mức lương: ${j.salary}</p>
+            <p class="text-xs text-gray-500">Hạn nộp: ${j.deadline}</p>
+            <span class="text-xs font-semibold text-brand-primary">Xem chi tiết &amp; ứng tuyển <i class="fa-solid fa-arrow-right ml-1"></i></span>
+          </button>`).join("");
+      }
+      function renderJob(id) {
+        const j = JOBS.find((x) => x.id === id);
+        if (!j) return false;
+        const list = (items) => items.map((i) => `<li><i class="fa-solid fa-check text-brand-green mr-2"></i>${i}</li>`).join("");
+        $("job-detail").innerHTML = `
+          ${backButton("careers", "Tất cả vị trí")}
+          <div class="space-y-2">
+            <span class="bg-brand-primary/10 text-brand-primary text-xs font-bold px-2 py-0.5 rounded">${j.type}</span>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900">${j.title}</h1>
+            <p class="text-xs text-gray-500"><i class="fa-solid fa-location-dot mr-1"></i>${j.campus} · Hạn nộp: ${j.deadline}</p>
+            <p class="text-sm font-semibold text-brand-green">Mức lương: ${j.salary}</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-4 text-xs">
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm"><h2 class="font-bold text-sm text-brand-primary mb-2">Mô tả công việc</h2><ul class="space-y-2 text-gray-600">${list(j.desc)}</ul></div>
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm"><h2 class="font-bold text-sm text-brand-primary mb-2">Yêu cầu</h2><ul class="space-y-2 text-gray-600">${list(j.req)}</ul></div>
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm"><h2 class="font-bold text-sm text-brand-primary mb-2">Quyền lợi</h2><ul class="space-y-2 text-gray-600">${list(BENEFITS)}</ul></div>
+          </div>
+          <form id="form-job" onsubmit="submitJob(event)" novalidate class="bg-white p-6 md:p-8 rounded-2xl border border-brand-tint3 shadow-soft grid md:grid-cols-2 gap-4 text-left">
+            <h2 class="md:col-span-2 text-xl font-bold text-gray-900">Ứng tuyển vị trí này</h2>
+            <div><label for="job-name" class="block text-xs font-semibold text-gray-700 mb-1">Họ tên *</label><input id="job-name" name="name" type="text" required autocomplete="name" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" /><p class="field-error hidden text-xs text-red-600 mt-1"></p></div>
+            <div><label for="job-phone" class="block text-xs font-semibold text-gray-700 mb-1">Số điện thoại *</label><input id="job-phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" /><p class="field-error hidden text-xs text-red-600 mt-1"></p></div>
+            <div><label for="job-email" class="block text-xs font-semibold text-gray-700 mb-1">Email *</label><input id="job-email" name="email" type="email" required autocomplete="email" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary" /><p class="field-error hidden text-xs text-red-600 mt-1"></p></div>
+            <div><label for="job-campus" class="block text-xs font-semibold text-gray-700 mb-1">Cơ sở mong muốn</label><select id="job-campus" name="campus" class="campus-select w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs bg-white focus:outline-none focus:border-brand-primary" data-all="true"></select></div>
+            <div class="md:col-span-2"><label for="job-cv" class="block text-xs font-semibold text-gray-700 mb-1">Tải CV (PDF, DOC, DOCX, tối đa 5MB) *</label><input id="job-cv" name="cv" type="file" accept=".pdf,.doc,.docx" required class="w-full text-xs file:mr-3 file:px-4 file:py-2 file:rounded-full file:border-0 file:bg-brand-tint file:text-brand-primary file:font-semibold" /><p class="field-error hidden text-xs text-red-600 mt-1"></p></div>
+            <div class="md:col-span-2"><label for="job-msg" class="block text-xs font-semibold text-gray-700 mb-1">Giới thiệu ngắn</label><textarea id="job-msg" name="message" rows="3" maxlength="1000" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-primary"></textarea></div>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+            <div class="md:col-span-2"><button type="submit" class="w-full py-3 bg-brand-primary hover:bg-brand-deep text-white font-bold rounded-xl shadow-md text-xs transition">GỬI HỒ SƠ ỨNG TUYỂN</button><p class="text-xs text-gray-500 text-center mt-3">Hồ sơ được lưu tối đa 3 tháng. Xem <button type="button" onclick="navigateTo('privacy')" class="underline text-brand-primary">Chính sách bảo mật</button>.</p></div>
+          </form>`;
+        fillCampusSelects();
+        return true;
+      }
+
+      // ===== LIÊN HỆ =====
+      function renderContactCampuses() {
+        $("contact-campuses").innerHTML = Object.entries(CAMPUSES).map(([k, c]) => `
+          <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm text-xs space-y-1">
+            <h3 class="font-bold text-sm text-brand-primary">${esc(c.short)}</h3>
+            <p><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i>${esc(c.addr)}</p>
+            <button onclick="showCampusDetail('${k}')" class="font-semibold text-brand-primary hover:underline">Xem chi tiết &amp; bản đồ</button>
+          </div>`).join("");
+      }
+
+      // ===== FORM: kiểm tra hợp lệ, chống spam, chuyển trang cảm ơn =====
+      function fillCampusSelects() {
+        document.querySelectorAll(".campus-select").forEach((sel) => {
+          if (sel.options.length) return;
+          const first = sel.dataset.all ? `<option value="">Chưa xác định</option>` : "";
+          sel.innerHTML = first + Object.entries(CAMPUSES).map(([k, c]) => `<option value="${k}">${esc(c.short)}</option>`).join("");
+        });
+      }
+      const VALIDATORS = {
+        required: (v) => (v.trim() ? "" : "Vui lòng nhập thông tin này."),
+        phone: (v) => (/^(0|\+84)\d{9,10}$/.test(v.replace(/[\s.\-]/g, "")) ? "" : "Số điện thoại chưa đúng (ví dụ 0905 123 456)."),
+        email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Email chưa đúng định dạng."),
+      };
+      const CV_MAX_BYTES = 5 * 1024 * 1024;
+      function fieldError(input, message) {
+        const p = input.parentElement.querySelector(".field-error");
+        input.setAttribute("aria-invalid", message ? "true" : "false");
+        if (p) {
+          p.textContent = message;
+          p.classList.toggle("hidden", !message);
+        }
+        return !message;
+      }
+      function validateForm(form, rules) {
+        let ok = true;
+        let firstBad = null;
+        Object.entries(rules).forEach(([name, checks]) => {
+          const input = form.elements[name];
+          let message = "";
+          for (const check of checks) {
+            message = input.type === "file" ? check(input) : check(input.value);
+            if (message) break;
+          }
+          if (!fieldError(input, message)) {
+            ok = false;
+            firstBad = firstBad || input;
+          }
+        });
+        if (firstBad) firstBad.focus();
+        return ok;
+      }
+      const isSpam = (form) => Boolean(form.elements.website && form.elements.website.value);
+      const cvCheck = (input) => {
+        const f = input.files[0];
+        if (!f) return "Vui lòng chọn file CV.";
+        if (!/\.(pdf|docx?)$/i.test(f.name)) return "Chỉ nhận file PDF, DOC hoặc DOCX.";
+        if (f.size > CV_MAX_BYTES) return "File vượt quá 5MB.";
+        return "";
+      };
+
+      function showThanks(kind) {
+        const text = {
+          admission: ["Cảm ơn Phụ huynh đã đăng ký!", "Bộ phận tuyển sinh cơ sở sẽ liên hệ lại trong vòng 24 giờ để xác nhận lịch tham quan."],
+          job: ["Đã nhận hồ sơ ứng tuyển", "Bộ phận nhân sự sẽ xem hồ sơ và liên hệ nếu hồ sơ phù hợp."],
+          contact: ["Đã nhận tin nhắn của bạn", "Chúng tôi sẽ phản hồi trong 1 ngày làm việc."],
+        }[kind];
+        $("thanks-title").textContent = text[0];
+        $("thanks-text").textContent = text[1];
+        navigateTo("thanks");
+      }
+      // Demo: chưa gửi dữ liệu về backend
+      function submitAdmission(e) {
+        e.preventDefault();
+        const form = e.target;
+        if (isSpam(form)) return showThanks("admission");
+        const ok = validateForm(form, { parent: [VALIDATORS.required], phone: [VALIDATORS.required, VALIDATORS.phone], child: [VALIDATORS.required] });
+        if (!ok) return;
+        form.reset();
+        showThanks("admission");
+      }
+      function submitContact(e) {
+        e.preventDefault();
+        const form = e.target;
+        if (isSpam(form)) return showThanks("contact");
+        const rules = { name: [VALIDATORS.required], phone: [VALIDATORS.required, VALIDATORS.phone], message: [VALIDATORS.required] };
+        if (form.elements.email.value) rules.email = [VALIDATORS.email];
+        if (!validateForm(form, rules)) return;
+        form.reset();
+        showThanks("contact");
+      }
+      function submitJob(e) {
+        e.preventDefault();
+        const form = e.target;
+        if (isSpam(form)) return showThanks("job");
+        const ok = validateForm(form, { name: [VALIDATORS.required], phone: [VALIDATORS.required, VALIDATORS.phone], email: [VALIDATORS.required, VALIDATORS.email], cv: [cvCheck] });
+        if (!ok) return;
+        form.reset();
+        showThanks("job");
+      }
+      function handleNewsletter(e) {
+        e.preventDefault();
+        const input = e.target.elements[0];
+        if (VALIDATORS.email(input.value)) {
+          toast("Email chưa đúng định dạng.");
+          return;
+        }
+        toast("Cảm ơn bạn đã đăng ký nhận thông tin! (Chức năng demo)");
+        e.target.reset();
+      }
+
+      // ===== CỔNG ĐĂNG NHẬP (modal giả lập) =====
+      function openPortalModal(type) {
+        const title = $("portal-title");
+        const desc = $("portal-desc");
+        const icon = $("portal-icon");
         if (type === "parent") {
           title.innerText = "Cổng Sổ Liên Lạc Phụ Huynh";
-          desc.innerText =
-            "Theo dõi nhật ký ăn, ngủ, sức khỏe và điểm danh của bé";
+          desc.innerText = "Theo dõi nhật ký ăn, ngủ, sức khỏe và điểm danh của bé";
           icon.className = "fa-solid fa-mobile-screen";
         } else {
           title.innerText = "Cổng Quản Lý Cán Bộ & Giáo Viên";
-          desc.innerText =
-            "Dành cho Giáo viên nộp giáo án, điểm danh và Ban giám hiệu duyệt báo cáo";
+          desc.innerText = "Dành cho Giáo viên nộp giáo án, điểm danh và Ban giám hiệu duyệt báo cáo";
           icon.className = "fa-solid fa-user-lock";
         }
-
-        modal.classList.remove("hidden");
+        $("portal-modal").classList.remove("hidden");
       }
-
       function closePortalModal() {
-        document.getElementById("portal-modal").classList.add("hidden");
+        $("portal-modal").classList.add("hidden");
       }
 
-      function handleFormSubmit(e) {
-        e.preventDefault();
-        alert(
-          "Cảm ơn Phụ huynh đã đăng ký! Bộ phận tuyển sinh cơ sở sẽ liên hệ lại trong vòng 24 giờ.",
-        );
+      // ===== NÚT LÊN ĐẦU TRANG =====
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
+      (function initScrollTop() {
+        const btn = $("scroll-top");
+        if (!btn) return;
+        function update() {
+          const show = window.scrollY > 400;
+          btn.classList.toggle("opacity-0", !show);
+          btn.classList.toggle("pointer-events-none", !show);
+          btn.tabIndex = show ? 0 : -1;
+        }
+        window.addEventListener("scroll", update, { passive: true });
+        update();
+      })();
+
+      // ===== ĐA NGÔN NGỮ VI/EN (khung giao diện; nội dung bài viết sẽ song ngữ từ CMS) =====
+      const EN = {
+        "Trang Chủ": "Home", "Giới Thiệu": "About", "Hệ Thống Cơ Sở": "Campuses", "Chương Trình Học": "Programs",
+        "Dinh Dưỡng": "Nutrition", "Thông Tin": "Information", "Tin Tức": "News", "Tuyển Sinh": "Admissions",
+        "Tuyển Dụng": "Careers", "Liên Hệ": "Contact", "Thư Viện Ảnh": "Gallery", "Đặt Lịch Tham Quan": "Book a School Tour",
+        "Đăng ký tư vấn": "Get advice", "App Phụ Huynh": "Parent App", "Phụ Huynh": "Parents",
+        "Portal Nội Bộ (GV/BGH)": "Staff Portal", "Nội Bộ": "Staff", "Danh Mục": "Menu",
+        "Liên Kết Tiện Ích": "Quick Links", "Liên Hệ Ban Quản Trị": "Contact Management", "Trang chủ": "Home",
+        "Giới thiệu hệ thống": "About us", "Hệ thống cơ sở": "Campuses", "Chương trình học": "Programs",
+        "Cổng Giáo Viên & BGH": "Staff & Management Portal", "Chọn cơ sở": "Campuses", "Đặt lịch tour": "Book a tour",
+        "Sổ liên lạc": "Parent link", "Chính sách bảo mật": "Privacy policy", "Cơ Hội Nghề Nghiệp": "Careers",
+        "Tin Tức & Hoạt Động Nổi Bật": "News & Highlights", "Đăng Ký Tham Quan & Nhập Học": "Book a Tour & Enroll",
+        "Quy Trình Đăng Ký Nhập Học": "Enrollment Process", "Bảng Phí & Học Bổng": "Fees & Scholarships",
+        "Câu Hỏi Thường Gặp": "FAQ", "Thư Viện Ảnh & Video": "Photo & Video Gallery",
+        "Chương Trình Học Theo Độ Tuổi": "Programs by Age", "Chế Độ Dinh Dưỡng & Y Tế": "Nutrition & Health",
+        "Danh Sách 4 Cơ Sở Trực Thuộc": "Our 4 Campuses", "Không tìm thấy trang": "Page not found",
+        "Về trang chủ": "Back to home",
+      };
+      const textOriginals = new WeakMap();
+      let currentLang = "vi";
+      function translateTree(root, lang) {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode: (n) => (n.parentElement && /^(SCRIPT|STYLE)$/.test(n.parentElement.tagName) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+        });
+        let node;
+        while ((node = walker.nextNode())) {
+          const raw = textOriginals.has(node) ? textOriginals.get(node) : node.nodeValue;
+          const key = raw.replace(/\s+/g, " ").trim();
+          if (!EN[key]) continue;
+          if (!textOriginals.has(node)) textOriginals.set(node, raw);
+          node.nodeValue = lang === "en" ? raw.replace(key, EN[key]) : raw;
+        }
+      }
+      function setLang(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        translateTree(document.body, lang);
+        const btn = $("lang-toggle");
+        if (btn) btn.setAttribute("aria-label", lang === "en" ? "Chuyển sang Tiếng Việt" : "Switch to English");
+        document.querySelectorAll("[data-lang-opt]").forEach((el) => el.classList.toggle("font-bold", el.dataset.langOpt === lang));
+        try { localStorage.setItem("lang", lang); } catch (e) { /* bỏ qua khi trình duyệt chặn storage */ }
+      }
+      function toggleLang() {
+        setLang(currentLang === "vi" ? "en" : "vi");
+      }
+
+      // ===== KHỞI TẠO =====
+      renderProgramCards();
+      initMenu();
+      renderNews();
+      renderGallery();
+      renderAdmissionExtras();
+      renderJobList();
+      renderContactCampuses();
+      fillCampusSelects();
+      window.addEventListener("hashchange", route);
+      route();
+      try {
+        if (localStorage.getItem("lang") === "en") setLang("en");
+      } catch (e) { /* bỏ qua */ }
     </script>
   </body>
 </html>

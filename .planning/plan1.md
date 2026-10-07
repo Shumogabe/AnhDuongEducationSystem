@@ -1,5 +1,5 @@
 - dựa vào file \SumarySystem.docx hãy tạo file \.structure\SumarySystem.md
-- thêm nút scroll up vào demo1.html
-- trong demo1.html phần FLOATING CONTACT thêm mail (mailto:mnanhduong.pgdviettri@gmail.com)
-- dựa vào demo1.html hãy điều chỉnh lại nội dung file \.structure\Instructions.md
+- thêm nút scroll up vào demo_portal.html
+- trong demo_portal.html phần FLOATING CONTACT thêm mail (mailto:mnanhduong.pgdviettri@gmail.com)
+- dựa vào demo_portal.html hãy điều chỉnh lại nội dung file \.structure\Instructions.md
 - thêm sitemap cho backend (\.structure\backend). Lưu ý cần confirm với tôi để cùng thiết kế chuẩn nhất
